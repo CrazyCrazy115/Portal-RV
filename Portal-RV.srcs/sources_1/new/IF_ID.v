@@ -23,10 +23,12 @@
 module IF_ID(
            input clk,
            input [31:0] in_inst,
+           input [31:0] in_pc,
            output reg [31:0] out_inst,
            output reg [4:0]  rs2,
            output reg [4:0]  rs1,
-           output reg [4:0]  rd
+           output reg [4:0]  rd,
+           output reg [31:0] out_pc
        );
 always @(posedge clk) begin
     out_inst <= in_inst;
@@ -34,5 +36,6 @@ always @(posedge clk) begin
     rs2      <= in_inst[24:20];
     rs1      <= in_inst[19:15];
     rd       <= in_inst[11:7];
+    out_pc   <= in_pc;
 end
 endmodule

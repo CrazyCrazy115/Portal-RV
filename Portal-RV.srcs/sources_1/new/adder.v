@@ -20,16 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module adder(
-    input clk,
+// simple adder for dynamic next pc calculate
+module Adder(
     input [31:0] a,
     input [31:0] b,
-    output reg [31:0] out,
-    output reg carry,
-    output reg overflow
-    );
-    always @(posedge clk ) begin
-        {carry, out} <= a + b;
-        overflow <= (a[31] == b[31] && a[31] != out[31]);
+    output reg [31:0] out
+);
+    always @(*) begin
+        out = a + b;
     end
 endmodule

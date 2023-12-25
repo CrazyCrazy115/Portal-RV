@@ -21,9 +21,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module alu(
-           input clk,
-           input rst,
+module ALU(
            input [31:0] a,
            input [31:0] b,
            input [4:0]  aluOp,
@@ -32,7 +30,7 @@ module alu(
            output reg carry
        );
 reg [31:0] t_no_cin;
-always @(posedge clk) begin
+always @(*) begin
     case(aluOp)
         `ADD : begin
             {carry, out} <= a + b;

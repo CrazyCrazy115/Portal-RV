@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+`include "definitions.vh"
 
 module cpu(
            input clk,
@@ -31,14 +32,20 @@ wire [31:0] inst_id;
 wire [4 :0] rs2_id;
 wire [4 :0] rs1_id;
 wire [4 :0] rd_id;
+wire [31:0] pc_id;
 IF_ID if_id(
           .clk(clk),
           .in_inst(inst),
+          .in_pc(pc),
           .out_inst(inst_id),
           .rs2(rs2_id),
           .rs1(rs1_id),
-          .rd(rd_id)
+          .rd(rd_id),
+          .out_pc(pc_id)
       );
+
+
+// instruction decode stage
 
 // register files
 wire regWrite;
@@ -69,7 +76,7 @@ wire        regWrite_id;
 wire [2:0]  regWriteSrc_id;
 wire        memToReg_id;
 
-idu idu(
+IDU idu(
     .clock(clk),
     .reset(rst),
     .io_inst(inst_id),
@@ -100,6 +107,8 @@ wire [2:0]  regWriteSrc_exe;
 wire        memToReg_exe;
 ID_EX id_ex(
     .clk(clk),
+    .in_pc(pc_id),
+    .in_imm(imm_id),
     .in_rs1(rdata1_id),
     .in_rs2(rdata2_id),
     .in_aluSrc1(aluSrc1_id),
@@ -111,6 +120,8 @@ ID_EX id_ex(
     .in_regWrite(regWrite_id),
     .in_regWriteSrc(regWriteSrc_id),
     .in_memToReg(memToReg_id),
+    .out_pc(pc_exe),
+    .out_imm(imm_exe),
     .out_rs1(rs1_exe),
     .out_rs2(rs2_exe),
     .out_aluSrc1(aluSrc1_exe),
@@ -123,6 +134,39 @@ ID_EX id_ex(
     .out_regWriteSrc(regWriteSrc_exe),
     .out_memToReg(memToReg_exe)
 );
+
+// execute stage
+wire [31:0] alu_a;
+wire [31:0] alu_b;
+wire [31:0] alu_res_exe;
+wire overflow;
+wire carry;
+assign alu_a = (aluSrc1_exe == `RS1) ? rs1_exe :
+               (aluSrc1_exe == `PC ) ? pc_exe  : 0;
+assign alu_b = (aluSrc2_exe == `RS2) ? rs2_exe :
+               (aluSrc2_exe == `IMM) ? imm_exe : 0;
+
+// alu
+ALU alu(
+    .a(alu_a),
+    .b(alu_b),
+    .aluOp(aluOp_exe),
+    .out(alu_res_exe),
+    .overflow(overflow),
+    .carry(carry)
+);
+
+// adder for next pc
+// immediate number shift left 2 bits
+wire [31:0] sl2_imm;
+wire [31:0] dnpc;
+assign sl2_imm = imm_exe << 2;
+Adder dnpc_adder(
+    .a(pc_exe),
+    .b(imm_exe),
+    .out(dnpc)
+);
+
 
 endmodule
 
