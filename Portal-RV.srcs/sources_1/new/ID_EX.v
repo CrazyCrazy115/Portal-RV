@@ -4,15 +4,20 @@ module ID_EX(
            input clk,
            input [31:0] in_rs1,
            input [31:0] in_rs2,
+           // control signals
+           // exe stage
            input [1:0]  in_aluSrc1,
            input        in_aluSrc2,
            input [4:0]  in_aluOp,
+           // mem stage
            input [1:0]  in_nextPCSrc,
            input [1:0]  in_memWrite,
            input [2:0]  in_memRead,
+           // wb stage
            input        in_regWrite,
            input [2:0]  in_regWriteSrc,
            input        in_memToReg,
+
            output reg [31:0] out_rs1,
            output reg [31:0] out_rs2,
            output reg [1:0]  out_aluSrc1,
