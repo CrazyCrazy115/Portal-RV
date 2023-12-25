@@ -2,6 +2,8 @@
 
 ## 控制信号Control Signal
 
+- 控制信号
+
 ```scala
 object ControlSignals {
   def Y = BitPat("b1")
@@ -146,6 +148,56 @@ object ControlSignals {
     def X = BitPat("b?")
     def WIDTH = X.getWidth
   }
+}
+
+```
+
+- 真值表
+
+```scala
+object ControlLogic{
+  val default: Seq[BitPat] = Seq(InstType.X, ALUSrc1.X, ALUSrc2.X, ALUOp.X, NextPCSrc.X, MemWrite.X, MemRead.X, RegWrite.X, RegWriteSrc.X, MemToReg.X)
+  val table = TruthTable(Map(
+    LUI   -> Seq(InstType.U, ALUSrc1.ZERO, ALUSrc2.IMM, ALUOp.ADD , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.IMM   , MemToReg.N),
+    AUIPC -> Seq(InstType.U, ALUSrc1.PC  , ALUSrc2.IMM, ALUOp.ADD , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    JAL   -> Seq(InstType.J, ALUSrc1.PC  , ALUSrc2.IMM, ALUOp.ADD , NextPCSrc.Jump  , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.PC4   , MemToReg.N),
+    JALR  -> Seq(InstType.I, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.ADD , NextPCSrc.Jump  , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.PC4   , MemToReg.N),
+    BEQ   -> Seq(InstType.B, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.EQ  , NextPCSrc.Branch, MemWrite.N, MemRead.N , RegWrite.N, RegWriteSrc.N     , MemToReg.N),
+    BNE   -> Seq(InstType.B, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.NEQ , NextPCSrc.Branch, MemWrite.N, MemRead.N , RegWrite.N, RegWriteSrc.N     , MemToReg.N),
+    BLT   -> Seq(InstType.B, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.LTS , NextPCSrc.Branch, MemWrite.N, MemRead.N , RegWrite.N, RegWriteSrc.N     , MemToReg.N),
+    BGE   -> Seq(InstType.B, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.GES , NextPCSrc.Branch, MemWrite.N, MemRead.N , RegWrite.N, RegWriteSrc.N     , MemToReg.N),
+    BLTU  -> Seq(InstType.B, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.LTU , NextPCSrc.Branch, MemWrite.N, MemRead.N , RegWrite.N, RegWriteSrc.N     , MemToReg.N),
+    BGEU  -> Seq(InstType.B, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.GEU , NextPCSrc.Branch, MemWrite.N, MemRead.N , RegWrite.N, RegWriteSrc.N     , MemToReg.N),
+    LH    -> Seq(InstType.I, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.ADD , NextPCSrc.PC4   , MemWrite.N, MemRead.HU, RegWrite.Y, RegWriteSrc.MEM   , MemToReg.Y),
+    LW    -> Seq(InstType.I, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.ADD , NextPCSrc.PC4   , MemWrite.N, MemRead.W , RegWrite.Y, RegWriteSrc.MEM   , MemToReg.Y),
+    LBU   -> Seq(InstType.I, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.ADD , NextPCSrc.PC4   , MemWrite.N, MemRead.B , RegWrite.Y, RegWriteSrc.MEM   , MemToReg.Y),
+    LHU   -> Seq(InstType.I, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.ADD , NextPCSrc.PC4   , MemWrite.N, MemRead.HS, RegWrite.Y, RegWriteSrc.MEM   , MemToReg.Y),
+    SB    -> Seq(InstType.S, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.ADD , NextPCSrc.PC4   , MemWrite.B, MemRead.N , RegWrite.N, RegWriteSrc.N     , MemToReg.N),
+    SH    -> Seq(InstType.S, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.ADD , NextPCSrc.PC4   , MemWrite.H, MemRead.N , RegWrite.N, RegWriteSrc.N     , MemToReg.N),
+    SW    -> Seq(InstType.S, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.ADD , NextPCSrc.PC4   , MemWrite.W, MemRead.N , RegWrite.N, RegWriteSrc.N     , MemToReg.N),
+    ADDI  -> Seq(InstType.I, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.ADD , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    SLTI  -> Seq(InstType.I, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.LTS , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    SLTIU -> Seq(InstType.I, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.LTU , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    XORI  -> Seq(InstType.I, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.XOR , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    ANDI  -> Seq(InstType.I, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.AND , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    SLLI  -> Seq(InstType.I, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.SLL , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    SRLI  -> Seq(InstType.I, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.SRL , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    SRAI  -> Seq(InstType.I, ALUSrc1.RS1 , ALUSrc2.IMM, ALUOp.SRA , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    ADD   -> Seq(InstType.R, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.ADD , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    SUB   -> Seq(InstType.R, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.SUB , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    SLL   -> Seq(InstType.R, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.SLL , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    SLT   -> Seq(InstType.R, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.LTS , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    SLTU  -> Seq(InstType.R, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.LTU , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    XOR   -> Seq(InstType.R, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.XOR , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    SRL   -> Seq(InstType.R, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.SRL , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    SRA   -> Seq(InstType.R, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.SRA , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    OR    -> Seq(InstType.R, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.OR  , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    AND   -> Seq(InstType.R, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.AND , NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    MUL   -> Seq(InstType.R, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.MULL, NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    MULH  -> Seq(InstType.R, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.MULH, NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    DIV   -> Seq(InstType.R, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.DIVS, NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N),
+    DIVU  -> Seq(InstType.R, ALUSrc1.RS1 , ALUSrc2.RS2, ALUOp.DIVU, NextPCSrc.PC4   , MemWrite.N, MemRead.N , RegWrite.Y, RegWriteSrc.ALURes, MemToReg.N)
+  ).map({case(k, v) => k -> v.reduce(_##_)}), default.reduce(_##_))
 }
 
 ```
