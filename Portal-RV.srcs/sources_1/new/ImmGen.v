@@ -9,12 +9,12 @@ module ImmGen(
 wire [31:0] _GEN [7:0];
 
 assign _GEN[0] = {32'h0};
-assign _GEN[1] = {32'h0};
-assign _GEN[2] = {{12{io_inst[31]}}, io_inst[19:12], io_inst[20], io_inst[30:21], 1'h0};
-assign _GEN[3] = {io_inst[31:12], 12'h0};
-assign _GEN[4] = {{20{io_inst[31]}}, io_inst[7], io_inst[30:25], io_inst[11:8], 1'h0};
-assign _GEN[5] = {{21{io_inst[31]}}, io_inst[30:25], io_inst[11:7]};
-assign _GEN[6] = {{21{io_inst[31]}}, io_inst[30:20]};
+assign _GEN[1] = {{21{io_inst[31]}}, io_inst[30:20]};
+assign _GEN[2] = {{21{io_inst[31]}}, io_inst[30:25], io_inst[11:7]};
+assign _GEN[3] = {{20{io_inst[31]}}, io_inst[7], io_inst[30:25], io_inst[11:8], 1'h0};
+assign _GEN[4] = {io_inst[31:12], 12'h0};
+assign _GEN[5] = {{12{io_inst[31]}}, io_inst[19:12], io_inst[20], io_inst[30:21], 1'h0};
+assign _GEN[6] = {32'h0};
 assign _GEN[7] = {32'h0};
 
 assign io_imm = _GEN[io_instType];

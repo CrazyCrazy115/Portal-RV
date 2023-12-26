@@ -3,9 +3,9 @@
 // Company:
 // Engineer:
 //
-// Create Date: 2023/12/23 19:37:05
+// Create Date: 2023/12/26 21:09:38
 // Design Name:
-// Module Name: PC
+// Module Name: top_tb
 // Project Name:
 // Target Devices:
 // Tool Versions:
@@ -20,19 +20,21 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module PC(
-           input clk,
-           input rst,
-           input stall,
-           input [31:0] d_next_pc,
-           output reg [31:0] pc
-       );
-
-always @(posedge clk) begin
-    if (rst)
-        pc <= 0;
-    else
-        pc <= stall ? pc : d_next_pc;
+module top_tb();
+reg clk;
+reg rst;
+top top(
+        .clk(clk),
+        .rst(rst)
+    );
+initial begin
+    // load instructions
+    $readmemh("E:/Download/add-longlong-riscv32-nemu-instruction.txt", top.instruction_memory.mem);
+    rst = 1;
+    clk = 0;
+    #30
+    rst = 0;
 end
 
+always #5 clk = ~clk;
 endmodule

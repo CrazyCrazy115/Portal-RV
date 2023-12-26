@@ -22,6 +22,7 @@
 
 module IF_ID(
            input clk,
+           input rst,
            input [31:0] in_inst,
            input [31:0] in_pc,
            output reg [31:0] out_inst,
@@ -31,11 +32,20 @@ module IF_ID(
            output reg [31:0] out_pc
        );
 always @(posedge clk) begin
-    out_inst <= in_inst;
-    // split the instruction
-    rs2      <= in_inst[24:20];
-    rs1      <= in_inst[19:15];
-    rd       <= in_inst[11:7];
-    out_pc   <= in_pc;
+    if (rst) begin
+        out_inst <= 0;
+        rs2      <= 0;
+        rs1      <= 0;
+        rd       <= 0;
+        out_pc   <= 0;
+    end
+    else begin
+        out_inst <= in_inst;
+        // split the instruction
+        rs2      <= in_inst[24:20];
+        rs1      <= in_inst[19:15];
+        rd       <= in_inst[11:7];
+        out_pc   <= in_pc;
+    end
 end
 endmodule

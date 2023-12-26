@@ -1,11 +1,12 @@
 `timescale 1ns / 1ps
+`include "definitions.vh"
 //////////////////////////////////////////////////////////////////////////////////
 // Company:
 // Engineer:
 //
-// Create Date: 2023/12/23 19:37:05
+// Create Date: 2023/12/26 20:33:01
 // Design Name:
-// Module Name: PC
+// Module Name: instruction_memory
 // Project Name:
 // Target Devices:
 // Tool Versions:
@@ -20,19 +21,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module PC(
-           input clk,
-           input rst,
-           input stall,
-           input [31:0] d_next_pc,
-           output reg [31:0] pc
+module instruction_memory(
+           input [31:0] pc,
+           output [31:0] inst
        );
-
-always @(posedge clk) begin
-    if (rst)
-        pc <= 0;
-    else
-        pc <= stall ? pc : d_next_pc;
-end
-
+reg [31:0] mem [0:`IM_SIZE - 1];
+assign inst = mem[pc >> 2];
 endmodule
