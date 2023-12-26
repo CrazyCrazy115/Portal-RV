@@ -25,9 +25,9 @@ module IF_ID(
            input [31:0] in_inst,
            input [31:0] in_pc,
            output reg [31:0] out_inst,
-           output reg [4:0]  rs2,
-           output reg [4:0]  rs1,
-           output reg [4:0]  rd,
+           output reg [4 :0] rs2,
+           output reg [4 :0] rs1,
+           output reg [4 :0] rd,
            output reg [31:0] out_pc
        );
 always @(posedge clk) begin

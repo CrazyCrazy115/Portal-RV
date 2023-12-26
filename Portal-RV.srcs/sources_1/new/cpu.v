@@ -8,11 +8,13 @@ module cpu(
            input [31:0] inst,
            output [31:0] pc,
            // memory write
-           output [31:0] mem_waddr,
-           output [31:0] mem_wdata,
+           output        we,
+           output [31:0] waddr,
+           output [31:0] wdata,
            // memory read
-           output [31:0] mem_raddr,
-           input  [31:0] mem_rdata
+           output        re,
+           output [31:0] raddr,
+           input  [31:0] rdata
        );
 // PC
 wire stall;
@@ -49,14 +51,14 @@ IF_ID if_id(
 
 // register files
 wire regWrite;
-wire [31:0] wdata;
+wire [31:0] reg_wdata;
 wire [31:0] rdata1_id;
 wire [31:0] rdata2_id;
 RegFiles rf(
              .clk(clk),
              .rst(rst),
              .wen(regWrite),
-             .wdata(wdata),
+             .wdata(reg_wdata),
              .waddr(rd_id),
              .raddr1(rs1_id),
              .rdata1(rdata1_id),
@@ -66,14 +68,14 @@ RegFiles rf(
 
 // control signal decode from idu
 wire [31:0] imm_id;
-wire [1:0]  aluSrc1_id;
+wire [1 :0] aluSrc1_id;
 wire        aluSrc2_id;
-wire [4:0]  aluOp_id;
-wire [1:0]  nextPCSrc_id;
-wire [1:0]  memWrite_id;
-wire [2:0]  memRead_id;
+wire [4 :0] aluOp_id;
+wire [1 :0] nextPCSrc_id;
+wire [1 :0] memWrite_id;
+wire [2 :0] memRead_id;
 wire        regWrite_id;
-wire [2:0]  regWriteSrc_id;
+wire [2 :0] regWriteSrc_id;
 wire        memToReg_id;
 
 IDU idu(
@@ -96,16 +98,17 @@ IDU idu(
 wire [31:0] rs1_exe;
 wire [31:0] rs2_exe;
 wire [31:0] imm_exe;
-wire [1:0]  aluSrc1_exe;
+wire [1 :0] aluSrc1_exe;
 wire        aluSrc2_exe;
-wire [4:0]  aluOp_exe;
-wire [1:0]  nextPCSrc_exe;
-wire [1:0]  memWrite_exe;
-wire [2:0]  memRead_exe;
+wire [4 :0] aluOp_exe;
+wire [1 :0] nextPCSrc_exe;
+wire [1 :0] memWrite_exe;
+wire [2 :0] memRead_exe;
 wire        regWrite_exe;
-wire [2:0]  regWriteSrc_exe;
+wire [2 :0] regWriteSrc_exe;
 wire        memToReg_exe;
-ID_EX id_ex(
+wire [4 :0] regWriteRd_exe;
+ID_EXE id_exe(
     .clk(clk),
     .in_pc(pc_id),
     .in_imm(imm_id),
@@ -120,6 +123,7 @@ ID_EX id_ex(
     .in_regWrite(regWrite_id),
     .in_regWriteSrc(regWriteSrc_id),
     .in_memToReg(memToReg_id),
+    .in_regWriteRd(rd_id),
     .out_pc(pc_exe),
     .out_imm(imm_exe),
     .out_rs1(rs1_exe),
@@ -132,13 +136,14 @@ ID_EX id_ex(
     .out_memRead(memRead_exe),
     .out_regWrite(regWrite_exe),
     .out_regWriteSrc(regWriteSrc_exe),
-    .out_memToReg(memToReg_exe)
+    .out_memToReg(memToReg_exe),
+    .out_regWriteRd(regWriteRd_exe)
 );
 
 // execute stage
 wire [31:0] alu_a;
 wire [31:0] alu_b;
-wire [31:0] alu_res_exe;
+wire [31:0] aluRes_exe;
 wire overflow;
 wire carry;
 assign alu_a = (aluSrc1_exe == `RS1) ? rs1_exe :
@@ -151,21 +156,95 @@ ALU alu(
     .a(alu_a),
     .b(alu_b),
     .aluOp(aluOp_exe),
-    .out(alu_res_exe),
+    .out(aluRes_exe),
     .overflow(overflow),
     .carry(carry)
 );
 
 // adder for next pc
 // immediate number shift left 2 bits
-wire [31:0] sl2_imm;
 wire [31:0] dnpc;
-assign sl2_imm = imm_exe << 2;
 Adder dnpc_adder(
     .a(pc_exe),
     .b(imm_exe),
     .out(dnpc)
 );
+
+// exe/mem
+wire [31:0] aluRes_mem;
+wire [31:0] rs2_mem;
+wire [31:0] dnpc_mem;
+wire [1 :0] nextPCSrc_mem;
+wire [1 :0] memWrite_mem;
+wire [2 :0] memRead_mem;
+wire       regWrite_mem;
+wire [2 :0] regWriteSrc_mem;
+wire       memToReg_mem;
+wire [4 :0] regWriteRd_mem;
+EXE_MEM exe_mem(
+    .clk(clk),
+    .in_aluRes(aluRes_exe),
+    .in_rs2(rs2_exe),
+    .in_dnpc(dnpc),
+    .in_nextPCSrc(nextPCSrc_exe),
+    .in_memWrite(memWrite_exe),
+    .in_memRead(memRead_exe),
+    .in_regWrite(regWrite_exe),
+    .in_regWriteSrc(regWriteSrc_exe),
+    .in_memToReg(memToReg_exe),
+    .in_regWriteRd(regWriteRd_exe),
+    .out_aluRes(alu_res_mem),
+    .out_rs2(rs2_mem),
+    .out_dnpc(dnpc_mem),
+    .out_nextPCSrc(nextPCSrc_mem),
+    .out_memWrite(memWrite_mem),
+    .out_memRead(memRead_mem),
+    .out_regWrite(regWrite_mem),
+    .out_regWriteSrc(regWriteSrc_mem),
+    .out_memToReg(memToReg_mem),
+    .out_regWriteRd(regWriteRd_mem)
+);
+
+// memory stage
+// memory write
+assign we = memWrite_mem != `MEM_WRITE_N ? 1'b1 : 1'b0;
+assign waddr = alu_res_mem;
+assign wdata = rs2_mem;
+
+// memory read
+assign re = memRead_mem != `MEM_READ_N ? 1'b1 : 1'b0;
+assign raddr = alu_res_mem;
+wire [31:0] rdata_mem;
+// data extend
+assign rdata_mem = memRead_mem == `MEM_READ_B  ? {{24{rdata[7]}}, rdata[7:0]} :
+                                  `MEM_READ_HU ? {{16{1'b0}}, rdata[15:0]} :
+                                  `MEM_READ_HS ? {{16{rdata[15]}}, rdata[15:0]} :
+                                  `MEM_READ_W  ? rdata : 0;
+
+// mem/wb
+wire [31:0] aluRes_wb;
+wire [31:0] memRead_wb;
+wire        regWrite_wb;
+wire [2 :0] regWriteSrc_wb;
+wire        memToReg_wb;
+wire [4 :0] regWriteRd_wb;
+MEM_WB mem_wb(
+    .clk(clk),
+    .in_aluRes(alu_res_mem),
+    .in_memRead(rdata_mem),
+    .in_regWrite(regWrite_mem),
+    .in_regWriteSrc(regWriteSrc_mem),
+    .in_memToReg(memToReg_mem),
+    .in_regWriteRd(regWriteRd_mem),
+    .out_aluRes(aluRes_wb),
+    .out_memRead(memRead_wb),
+    .out_regWrite(regWrite_wb),
+    .out_regWriteSrc(regWriteSrc_wb),
+    .out_memToReg(memToReg_wb),
+    .out_regWriteRd(regWriteRd_wb)
+);
+
+// write back stage
 
 
 endmodule

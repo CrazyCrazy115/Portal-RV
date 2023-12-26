@@ -33,9 +33,9 @@ always @(posedge clk) begin
     if (rst)
         pc <= 0;
     else
-        pc <= stall ?
-           pc :
-           (b_cond ? d_next_pc : pc + 4'h4);
+        pc <= stall  ? pc :
+              b_cond ? d_next_pc : 
+              pc + 4'h4;
 end
 
 endmodule

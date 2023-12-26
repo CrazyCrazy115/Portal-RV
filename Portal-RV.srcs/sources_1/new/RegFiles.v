@@ -6,12 +6,12 @@ module RegFiles (
            input wen,
            input rst,
            input   [31:0]    wdata,
-           input   [4:0]     waddr,
+           input   [4 :0]    waddr,
            // regs read 1
-           input   [4:0]     raddr1,
+           input   [4 :0]    raddr1,
            output  [31:0]    rdata1,
            // regs read 2
-           input   [4:0]     raddr2,
+           input   [4 :0]    raddr2,
            output  [31:0]    rdata2
        );
 reg [31:0] rf [31:0];

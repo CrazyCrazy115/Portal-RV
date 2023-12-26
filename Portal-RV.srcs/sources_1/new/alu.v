@@ -24,7 +24,7 @@
 module ALU(
            input [31:0] a,
            input [31:0] b,
-           input [4:0]  aluOp,
+           input [4 :0] aluOp,
            output reg [31:0] out,
            output reg overflow,
            output reg carry
