@@ -6,5 +6,6 @@
         "titleBar.activeBackground": "#473D48",
         "titleBar.activeForeground": "#FBFAFB"
     },
-    "digital-ide.welcome.show": false
+    "digital-ide.welcome.show": false,
+    "digital-ide.dont-show-again.propose.issue": true
 }
