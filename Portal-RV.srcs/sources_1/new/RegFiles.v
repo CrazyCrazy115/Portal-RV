@@ -18,9 +18,9 @@ reg [31:0] rf [31:0];
 integer i;
 
 assign rdata1 = (raddr1 == 0) ? 0 :
-       (waddr == raddr1 && wen ? wdata : rf[raddr1]);
+                (waddr == raddr1 && wen) ? wdata : rf[raddr1];
 assign rdata2 = (raddr2 == 0) ? 0 :
-       (waddr == raddr2 && wen ? wdata : rf[raddr2]);
+                (waddr == raddr2 && wen) ? wdata : rf[raddr2];
 
 always @(posedge clk) begin
 	if (rst) begin

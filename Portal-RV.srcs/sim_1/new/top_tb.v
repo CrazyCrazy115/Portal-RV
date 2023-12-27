@@ -29,7 +29,8 @@ top top(
     );
 initial begin
     // load instructions
-    $readmemh("E:/Download/add-longlong-riscv32-nemu-instruction.txt", top.instruction_memory.mem);
+    $readmemh("../../../sim_data/instructions/add-longlong-hex.txt", top.instruction_memory.mem);
+    $readmemh("../../../sim_data/data_memory/data_memory.txt", top.data_memory.mem);
     rst = 1;
     clk = 0;
     #30

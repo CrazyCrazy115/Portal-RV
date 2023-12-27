@@ -53,6 +53,7 @@ IF_ID if_id(
 
 // register files
 wire regWrite;
+wire [5 :0] reg_waddr;
 wire [31:0] reg_wdata;
 wire [31:0] rdata1_id;
 wire [31:0] rdata2_id;
@@ -61,7 +62,7 @@ RegFiles rf(
              .rst(rst),
              .wen(regWrite),
              .wdata(reg_wdata),
-             .waddr(rd_id),
+             .waddr(reg_waddr),
              .raddr1(rs1_id),
              .rdata1(rdata1_id),
              .raddr2(rs2_id),
@@ -95,6 +96,7 @@ IDU idu(
 );
 
 // id/exe
+wire [31:0] pc_exe;
 wire [31:0] rs1_exe;
 wire [31:0] rs2_exe;
 wire [31:0] imm_exe;
@@ -160,7 +162,6 @@ ALU alu(
 );
 
 // adder for next pc
-// immediate number shift left 2 bits
 wire [31:0] dnpc;
 Adder dnpc_adder(
     .a(pc_exe),
@@ -176,7 +177,7 @@ wire [31:0] dnpc_mem;
 wire [1 :0] nextPCSrc_mem;
 wire [1 :0] memWrite_mem;
 wire [2 :0] memRead_mem;
-wire       regWrite_mem;
+wire        regWrite_mem;
 wire [2 :0] regWriteSrc_mem;
 wire [4 :0] regWriteRd_mem;
 EXE_MEM exe_mem(
@@ -192,7 +193,7 @@ EXE_MEM exe_mem(
     .in_regWrite(regWrite_exe),
     .in_regWriteSrc(regWriteSrc_exe),
     .in_regWriteRd(regWriteRd_exe),
-    .out_aluRes(alu_res_mem),
+    .out_aluRes(aluRes_mem),
     .out_rs2(rs2_mem),
     .out_pc(pc_mem),
     .out_dnpc(dnpc_mem),
@@ -207,13 +208,13 @@ EXE_MEM exe_mem(
 // memory stage
 // memory write
 assign we = (memWrite_mem != `MEM_WRITE_N) ? 1'b1 : 1'b0;
-assign waddr = alu_res_mem;
+assign waddr = aluRes_mem;
 assign wdata = rs2_mem;
 // TODO: Write different width data
 
 // memory read
 assign re = (memRead_mem != `MEM_READ_N) ? 1'b1 : 1'b0;
-assign raddr = alu_res_mem;
+assign raddr = aluRes_mem;
 wire [31:0] rdata_mem;
 // data extend
 assign rdata_mem = memRead_mem == (`MEM_READ_B ) ? {{24{rdata[7]}}, rdata[7:0]} :
@@ -235,7 +236,7 @@ wire [4 :0] regWriteRd_wb;
 MEM_WB mem_wb(
     .clk(clk),
     .rst(rst),
-    .in_aluRes(alu_res_mem),
+    .in_aluRes(aluRes_mem),
     .in_pc(pc_mem),
     .in_memRead(rdata_mem),
     .in_regWrite(regWrite_mem),
@@ -254,8 +255,6 @@ assign regWrite = (regWriteSrc_wb != `REG_WRITE_SRC_N) ? 1'b1 : 1'b0;
 assign reg_wdata = (regWriteSrc_wb == `REG_WRITE_SRC_ALU_RES) ? aluRes_wb :
                    (regWriteSrc_wb == `REG_WRITE_SRC_PC4    ) ? pc_wb + 4'h4 :
                    (regWriteSrc_wb == `REG_WRITE_SRC_MEM    ) ? memRead_wb : 0;
-
-
-
+assign reg_waddr = regWriteRd_wb;
 endmodule
 

@@ -66,6 +66,7 @@ always @(posedge clk) begin
     else begin
         out_aluRes      <= in_aluRes;
         out_rs2         <= in_rs2;
+        out_pc          <= in_pc;
         out_dnpc        <= in_dnpc;
         out_nextPCSrc   <= in_nextPCSrc;
         out_memWrite    <= in_memWrite;
@@ -73,6 +74,7 @@ always @(posedge clk) begin
         out_regWrite    <= in_regWrite;
         out_regWriteSrc <= in_regWriteSrc;
         out_memToReg    <= in_memToReg;
+        out_regWriteRd  <= in_regWriteRd;
     end
 end
 endmodule

@@ -34,7 +34,6 @@ module ID_EXE(
            output reg [2 :0] out_memRead,
            output reg        out_regWrite,
            output reg [2 :0] out_regWriteSrc,
-           output reg        out_memToReg,
            output reg [4 :0] out_regWriteRd
        );
 always @(posedge clk) begin
@@ -51,11 +50,11 @@ always @(posedge clk) begin
         out_memRead     <= 0;
         out_regWrite    <= 0;
         out_regWriteSrc <= 0;
-        out_memToReg    <= 0;
         out_regWriteRd  <= 0;
     end
     else begin
-
+        out_pc          <= in_pc;
+        out_imm         <= in_imm;
         out_rs1         <= in_rs1;
         out_rs2         <= in_rs2;
         out_aluSrc1     <= in_aluSrc1;
@@ -66,7 +65,6 @@ always @(posedge clk) begin
         out_memRead     <= in_memRead;
         out_regWrite    <= in_regWrite;
         out_regWriteSrc <= in_regWriteSrc;
-        out_memToReg    <= in_memToReg;
         out_regWriteRd  <= in_regWriteRd;
     end
 end

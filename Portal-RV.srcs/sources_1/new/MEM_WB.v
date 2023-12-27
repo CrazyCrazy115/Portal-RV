@@ -30,10 +30,12 @@ always @(posedge clk) begin
     end
     else begin
         out_aluRes      <= in_aluRes;
+        out_pc          <= in_pc;
         out_memRead     <= in_memRead;
         out_regWrite    <= in_regWrite;
         out_regWriteSrc <= in_regWriteSrc;
         out_memToReg    <= in_memToReg;
+        out_regWriteRd  <= in_regWriteRd;
     end
 end
 endmodule
