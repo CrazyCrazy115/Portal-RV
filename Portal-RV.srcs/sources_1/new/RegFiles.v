@@ -25,7 +25,7 @@ assign rdata2 = (raddr2 == 0) ? 0 :
 always @(posedge clk) begin
 	if (rst) begin
 		for (i = 0; i < 32; i = i + 1) begin
-			rf[i] <= 0;
+			rf[i] <= i;
 		end
 	end
 	else begin

@@ -19,7 +19,7 @@ module cpu(
        );
 // PC
 wire stall;
-wire b_cond;
+wire jump;
 assign stall = 1'b0;
 wire [31:0] d_next_pc;
 PC PC(
@@ -53,7 +53,7 @@ IF_ID if_id(
 
 // register files
 wire regWrite;
-wire [5 :0] reg_waddr;
+wire [4 :0] reg_waddr;
 wire [31:0] reg_wdata;
 wire [31:0] rdata1_id;
 wire [31:0] rdata2_id;
@@ -66,7 +66,7 @@ RegFiles rf(
              .raddr1(rs1_id),
              .rdata1(rdata1_id),
              .raddr2(rs2_id),
-             .rdata2(rdata2)
+             .rdata2(rdata2_id)
          );
 
 // control signal decode from idu
@@ -95,15 +95,36 @@ IDU idu(
     .io_regWriteSrc(regWriteSrc_id)
 );
 
+// branch or jump
+// calculate dynamic next pc
+wire [31:0] dnpc;
+Adder dnpc_adder(
+    .a(pc_id),
+    .b(imm_id),
+    .out(dnpc)
+);
+
+// check the branch condition
+wire branch_cond;
+ALU_Branch alu_branch(
+    .a(rdata1_id),
+    .b(rdata2_id),
+    .aluOp(aluOp_id),
+    .cond(branch_cond)
+);
+
+assign jump = (nextPCSrc_id == `NEXT_PC_JUMP) ? 1'b1 :
+              (nextPCSrc_id == `NEXT_PC_BRANCH && branch_cond) ? 1'b1 : 1'b0;
+assign d_next_pc = jump ? dnpc : pc + 4'h4;
+
 // id/exe
 wire [31:0] pc_exe;
-wire [31:0] rs1_exe;
-wire [31:0] rs2_exe;
+wire [31:0] rdata1_exe;
+wire [31:0] rdata2_exe;
 wire [31:0] imm_exe;
 wire [1 :0] aluSrc1_exe;
 wire        aluSrc2_exe;
 wire [4 :0] aluOp_exe;
-wire [1 :0] nextPCSrc_exe;
 wire [1 :0] memWrite_exe;
 wire [2 :0] memRead_exe;
 wire        regWrite_exe;
@@ -114,12 +135,11 @@ ID_EXE id_exe(
     .rst(rst),
     .in_pc(pc_id),
     .in_imm(imm_id),
-    .in_rs1(rdata1_id),
-    .in_rs2(rdata2_id),
+    .in_rdata1(rdata1_id),
+    .in_rdata2(rdata2_id),
     .in_aluSrc1(aluSrc1_id),
     .in_aluSrc2(aluSrc2_id),
     .in_aluOp(aluOp_id),
-    .in_nextPCSrc(nextPCSrc_id),
     .in_memWrite(memWrite_id),
     .in_memRead(memRead_id),
     .in_regWrite(regWrite_id),
@@ -127,12 +147,11 @@ ID_EXE id_exe(
     .in_regWriteRd(rd_id),
     .out_pc(pc_exe),
     .out_imm(imm_exe),
-    .out_rs1(rs1_exe),
-    .out_rs2(rs2_exe),
+    .out_rdata1(rdata1_exe),
+    .out_rdata2(rdata2_exe),
     .out_aluSrc1(aluSrc1_exe),
     .out_aluSrc2(aluSrc2_exe),
     .out_aluOp(aluOp_exe),
-    .out_nextPCSrc(nextPCSrc_exe),
     .out_memWrite(memWrite_exe),
     .out_memRead(memRead_exe),
     .out_regWrite(regWrite_exe),
@@ -146,9 +165,9 @@ wire [31:0] alu_b;
 wire [31:0] aluRes_exe;
 wire overflow;
 wire carry;
-assign alu_a = (aluSrc1_exe == `RS1) ? rs1_exe :
+assign alu_a = (aluSrc1_exe == `RS1) ? rdata1_exe :
                (aluSrc1_exe == `PC ) ? pc_exe  : 0;
-assign alu_b = (aluSrc2_exe == `RS2) ? rs2_exe :
+assign alu_b = (aluSrc2_exe == `RS2) ? rdata2_exe :
                (aluSrc2_exe == `IMM) ? imm_exe : 0;
 
 // alu
@@ -161,20 +180,10 @@ ALU alu(
     .carry(carry)
 );
 
-// adder for next pc
-wire [31:0] dnpc;
-Adder dnpc_adder(
-    .a(pc_exe),
-    .b(imm_exe),
-    .out(dnpc)
-);
-
 // exe/mem
 wire [31:0] aluRes_mem;
-wire [31:0] rs2_mem;
+wire [31:0] rdata2_mem;
 wire [31:0] pc_mem;
-wire [31:0] dnpc_mem;
-wire [1 :0] nextPCSrc_mem;
 wire [1 :0] memWrite_mem;
 wire [2 :0] memRead_mem;
 wire        regWrite_mem;
@@ -184,20 +193,16 @@ EXE_MEM exe_mem(
     .clk(clk),
     .rst(rst),
     .in_aluRes(aluRes_exe),
-    .in_rs2(rs2_exe),
+    .in_rdata2(rdata2_exe),
     .in_pc(pc_exe),
-    .in_dnpc(dnpc),
-    .in_nextPCSrc(nextPCSrc_exe),
     .in_memWrite(memWrite_exe),
     .in_memRead(memRead_exe),
     .in_regWrite(regWrite_exe),
     .in_regWriteSrc(regWriteSrc_exe),
     .in_regWriteRd(regWriteRd_exe),
     .out_aluRes(aluRes_mem),
-    .out_rs2(rs2_mem),
+    .out_rdata2(rdata2_mem),
     .out_pc(pc_mem),
-    .out_dnpc(dnpc_mem),
-    .out_nextPCSrc(nextPCSrc_mem),
     .out_memWrite(memWrite_mem),
     .out_memRead(memRead_mem),
     .out_regWrite(regWrite_mem),
@@ -208,8 +213,9 @@ EXE_MEM exe_mem(
 // memory stage
 // memory write
 assign we = (memWrite_mem != `MEM_WRITE_N) ? 1'b1 : 1'b0;
+assign wtype = memWrite_mem;
 assign waddr = aluRes_mem;
-assign wdata = rs2_mem;
+assign wdata = rdata2_mem;
 // TODO: Write different width data
 
 // memory read
@@ -217,18 +223,15 @@ assign re = (memRead_mem != `MEM_READ_N) ? 1'b1 : 1'b0;
 assign raddr = aluRes_mem;
 wire [31:0] rdata_mem;
 // data extend
-assign rdata_mem = memRead_mem == (`MEM_READ_B ) ? {{24{rdata[7]}}, rdata[7:0]} :
+assign rdata_mem = memRead_mem == (`MEM_READ_BS) ? {{24{rdata[7]}}, rdata[7:0]} :
+                                  (`MEM_READ_BU) ? {{24{1'b0}}, rdata[7:0]} :
                                   (`MEM_READ_HU) ? {{16{1'b0}}, rdata[15:0]} :
                                   (`MEM_READ_HS) ? {{16{rdata[15]}}, rdata[15:0]} :
                                   (`MEM_READ_W ) ? rdata : 0;
 
-// branch
-assign b_cond = (nextPCSrc_mem == `NEXT_PC_JUMP) ? 1'b1 :
-                (nextPCSrc_mem == `NEXT_PC_BRANCH && aluRes_mem == 32'b1) ? 1'b1 : 1'b0;
-assign d_next_pc = b_cond ? dnpc_mem : pc + 4'h4;
-
 // mem/wb
 wire [31:0] aluRes_wb;
+wire [31:0] pc_wb;
 wire [31:0] memRead_wb;
 wire        regWrite_wb;
 wire [2 :0] regWriteSrc_wb;
