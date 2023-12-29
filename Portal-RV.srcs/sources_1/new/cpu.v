@@ -80,7 +80,6 @@ wire [4 :0] regWriteRd_wb;
 // PC
 wire stall;
 wire jump;
-assign stall = 1'b0;
 wire [31:0] d_next_pc;
 PC PC(
        .clk(clk),
@@ -94,6 +93,7 @@ IF_ID if_id(
           .clk(clk),
           .rst(rst),
           .flush(jump),
+          .stall(stall),
           .in_inst(inst),
           .in_pc(pc),
           .out_inst(inst_id),
@@ -102,6 +102,15 @@ IF_ID if_id(
           .rd(rd_id),
           .out_pc(pc_id)
       );
+
+// Hazard detection unit
+HazardDetectionUnit hdu(
+    .id_exe_memRead(memRead_exe),
+    .id_exe_rd(regWriteRd_exe),
+    .if_id_rs1(rs1_id),
+    .if_id_rs2(rs2_id),
+    .stall(stall)
+);
 
 // instruction decode stage
 // register files
@@ -164,6 +173,7 @@ assign d_next_pc = (jump && nextPCSrc_id != `NEXT_PC_JUMPR) ? dnpc :
 ID_EXE id_exe(
     .clk(clk),
     .rst(rst),
+    .stall(stall),
     .in_pc(pc_id),
     .in_imm(imm_id),
     .in_rs1(rs1_id),
@@ -248,7 +258,7 @@ EXE_MEM exe_mem(
     .clk(clk),
     .rst(rst),
     .in_aluRes(aluRes_exe),
-    .in_rdata2(rdata2_exe),
+    .in_rdata2(data2),
     .in_pc(pc_exe),
     .in_memWrite(memWrite_exe),
     .in_memRead(memRead_exe),

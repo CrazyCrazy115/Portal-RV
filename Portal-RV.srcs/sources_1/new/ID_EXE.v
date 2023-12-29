@@ -1,8 +1,10 @@
 `timescale 1ns/1ps
+`include "definitions.vh"
 
 module ID_EXE(
            input clk,
            input rst,
+           input stall,
            input [31:0] in_pc,
            input [31:0] in_imm,
            input [5 :0] in_rs1,
@@ -61,13 +63,13 @@ always @(posedge clk) begin
         out_rs2         <= in_rs2;
         out_rdata1      <= in_rdata1;
         out_rdata2      <= in_rdata2;
-        out_aluSrc1     <= in_aluSrc1;
-        out_aluSrc2     <= in_aluSrc2;
-        out_aluOp       <= in_aluOp;
-        out_memWrite    <= in_memWrite;
-        out_memRead     <= in_memRead;
-        out_regWrite    <= in_regWrite;
-        out_regWriteSrc <= in_regWriteSrc;
+        out_aluSrc1     <= stall ? `ALU_SRC1_N      : in_aluSrc1;
+        out_aluSrc2     <= stall ? `ALU_SRC2_N      : in_aluSrc2;
+        out_aluOp       <= stall ? `ALU_OP_N        : in_aluOp;
+        out_memWrite    <= stall ? `MEM_WRITE_N     : in_memWrite;
+        out_memRead     <= stall ? `MEM_READ_N      : in_memRead;
+        out_regWrite    <= stall ? `REG_WRITE_N     : in_regWrite;
+        out_regWriteSrc <= stall ? `REG_WRITE_SRC_N : in_regWriteSrc;
         out_regWriteRd  <= in_regWriteRd;
     end
 end

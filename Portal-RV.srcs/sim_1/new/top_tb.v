@@ -29,7 +29,7 @@ top top(
     );
 initial begin
     // load instructions
-    $readmemh("D:/coding/cpu/Portal-RV/sim_data/instructions/fu-test-hex.txt", top.instruction_memory.mem);
+    $readmemh("D:/coding/cpu/Portal-RV/sim_data/instructions/add-longlong-hex.txt", top.instruction_memory.mem);
     $readmemh("D:/coding/cpu/Portal-RV/sim_data/data_memory/data_memory.txt", top.data_memory.mem);
     $readmemh("D:/coding/cpu/Portal-RV/sim_data/reg-init.txt", top.cpu.rf.rf);
     rst = 1;

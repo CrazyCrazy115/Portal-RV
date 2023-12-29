@@ -24,6 +24,7 @@ module IF_ID(
            input clk,
            input rst,
            input flush,
+           input stall,
            input [31:0] in_inst,
            input [31:0] in_pc,
            output reg [31:0] out_inst,
@@ -41,11 +42,19 @@ always @(posedge clk) begin
         out_pc   <= 0;
     end
     else begin
-        out_inst <= flush ? 32'h00000000 : in_inst;
+        out_inst <= flush ? 32'h00000000 : 
+                    stall ? out_inst     : 
+                    in_inst;
         // split the instruction
-        rs2      <= flush ? 5'b00000 : in_inst[24:20];
-        rs1      <= flush ? 5'b00000 : in_inst[19:15];
-        rd       <= flush ? 5'b00000 : in_inst[11:7];
+        rs2      <= flush ? 5'b00000        : 
+                    stall ? out_inst[24:20] :
+                    in_inst[24:20];
+        rs1      <= flush ? 5'b00000        : 
+                    stall ? out_inst[19:15] :
+                    in_inst[19:15];
+        rd       <= flush ? 5'b00000       : 
+                    stall ? out_inst[11:7] : 
+                    in_inst[11:7];
         out_pc   <= in_pc;
     end
 end

@@ -66,15 +66,16 @@ module IDU(	// <stdin>:60:3
   );
   assign io_aluSrc1 = {|{&_ctrlWord_T_5, io_inst[3]}, &_ctrlWord_T_14};	// <stdin>:60:3, playground/src/core/idu.scala:92:25, src/main/scala/chisel3/util/pla.scala:90:45, :98:{53,70}, :114:{19,36}
   assign io_aluSrc2 =
-    |{&_ctrlWord_T_3,
-      &_ctrlWord_T_5,
-      io_inst[3],
-      &_ctrlWord_T_8,
-      &_ctrlWord_T_12,
-      &_ctrlWord_T_14,
-      &_ctrlWord_T_21,
-      &_ctrlWord_T_30,
-      &_ctrlWord_T_38};	// <stdin>:60:3, src/main/scala/chisel3/util/pla.scala:90:45, :98:{53,70}, :114:{19,36}
+    {1'h0,
+     |{&_ctrlWord_T_3,
+       &_ctrlWord_T_5,
+       io_inst[3],
+       &_ctrlWord_T_8,
+       &_ctrlWord_T_12,
+       &_ctrlWord_T_14,
+       &_ctrlWord_T_21,
+       &_ctrlWord_T_30,
+       &_ctrlWord_T_38}};	// <stdin>:60:3, playground/src/core/idu.scala:94:25, src/main/scala/chisel3/util/pla.scala:90:45, :98:{53,70}, :102:36, :114:{19,36}
   assign io_aluOp =
     {&_ctrlWord_T_18,
      |{&_ctrlWord_T_34,
@@ -147,6 +148,7 @@ module IDU(	// <stdin>:60:3
     {|{ctrlWord_invInputs[0], &_ctrlWord_T_12, &_ctrlWord_T_16},
      |{&_ctrlWord_T_1, &_ctrlWord_T_3, io_inst[3]},
      &_ctrlWord_T_1};	// <stdin>:60:3, playground/src/core/idu.scala:106:29, src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:{53,70}, :114:{19,36}
+
 
 endmodule
 

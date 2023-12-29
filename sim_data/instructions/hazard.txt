@@ -1,0 +1,27 @@
+main:
+#Initialize
+addi x11,x0,11
+addi x13,x0,13
+addi x5,x0,5
+addi x6,x0,6
+addi x4,x0,4
+#data hazard
+sub x12,x11,x13
+and x12,x12,x5
+or x13,x6,x12
+add x14,x12,x12
+sw x14,4(X3)
+# double data hazard
+add x11,x11,x12
+add x11,x11,x13
+add x11,x4,x11
+# load-use data hazard
+lw x12,0(x3)
+and x4,x12,x5
+or x8,X12,X6
+add x9,x4,x12
+# control hazard
+beq x0,x0,main
+addi x5,x0,5
+addi x6,x0,6
+addi x4,x0,4
