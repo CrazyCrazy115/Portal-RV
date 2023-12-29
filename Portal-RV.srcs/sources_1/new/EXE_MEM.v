@@ -24,11 +24,9 @@ module EXE_MEM(
            input clk,
            input rst,
            input [31:0] in_aluRes,
-           input [31:0] in_rs2,
+           input [31:0] in_rdata2,
            input [31:0] in_pc,
-           input [31:0] in_dnpc,
            // mem stage
-           input [1 :0] in_nextPCSrc,
            input [1 :0] in_memWrite,
            input [2 :0] in_memRead,
            // wb stage
@@ -38,9 +36,8 @@ module EXE_MEM(
            input [4 :0] in_regWriteRd,
 
            output reg [31:0] out_aluRes,
-           output reg [31:0] out_rs2,
+           output reg [31:0] out_rdata2,
            output reg [31:0] out_pc,
-           output reg [31:0] out_dnpc,
            output reg [1 :0] out_nextPCSrc,
            output reg [1 :0] out_memWrite,
            output reg [2 :0] out_memRead,
@@ -52,10 +49,8 @@ module EXE_MEM(
 always @(posedge clk) begin
     if (rst) begin
         out_aluRes      <= 0;
-        out_rs2         <= 0;
+        out_rdata2      <= 0;
         out_pc          <= 0;
-        out_dnpc        <= 0;
-        out_nextPCSrc   <= 0;
         out_memWrite    <= 0;
         out_memRead     <= 0;
         out_regWrite    <= 0;
@@ -65,10 +60,8 @@ always @(posedge clk) begin
     end
     else begin
         out_aluRes      <= in_aluRes;
-        out_rs2         <= in_rs2;
+        out_rdata2      <= in_rdata2;
         out_pc          <= in_pc;
-        out_dnpc        <= in_dnpc;
-        out_nextPCSrc   <= in_nextPCSrc;
         out_memWrite    <= in_memWrite;
         out_memRead     <= in_memRead;
         out_regWrite    <= in_regWrite;

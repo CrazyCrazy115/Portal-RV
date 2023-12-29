@@ -1,0 +1,9 @@
+add  x1, x2,x3;
+addi x6,x4,-5;
+andi x8,x5,-10;
+and  x7,x1,x2;
+auipc x9,8;
+ori x19,x16,-8;
+sub x27,x2,x3;
+xor x29,x2,x3;
+xori x30,x4,-2;
