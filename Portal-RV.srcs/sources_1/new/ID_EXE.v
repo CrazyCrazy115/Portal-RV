@@ -5,6 +5,8 @@ module ID_EXE(
            input rst,
            input [31:0] in_pc,
            input [31:0] in_imm,
+           input [5 :0] in_rs1,
+           input [5 :0] in_rs2,
            input [31:0] in_rdata1,
            input [31:0] in_rdata2,
            // control signals
@@ -22,6 +24,8 @@ module ID_EXE(
 
            output reg [31:0] out_pc,
            output reg [31:0] out_imm,
+           output reg [4 :0] out_rs1,
+           output reg [4 :0] out_rs2,
            output reg [31:0] out_rdata1,
            output reg [31:0] out_rdata2,
            output reg [1 :0] out_aluSrc1,
@@ -37,6 +41,8 @@ always @(posedge clk) begin
     if (rst) begin
         out_pc          <= 0;
         out_imm         <= 0;
+        out_rs1         <= 0;     
+        out_rs2         <= 0;
         out_rdata1      <= 0;
         out_rdata2      <= 0;
         out_aluSrc1     <= 0;
@@ -51,6 +57,8 @@ always @(posedge clk) begin
     else begin
         out_pc          <= in_pc;
         out_imm         <= in_imm;
+        out_rs1         <= in_rs1;
+        out_rs2         <= in_rs2;
         out_rdata1      <= in_rdata1;
         out_rdata2      <= in_rdata2;
         out_aluSrc1     <= in_aluSrc1;

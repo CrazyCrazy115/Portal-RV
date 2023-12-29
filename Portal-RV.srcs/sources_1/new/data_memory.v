@@ -32,7 +32,7 @@ module data_memory(
            output [31:0] rdata
        );
 reg [7:0] mem [0:`DM_SIZE - 1];
-assign rdata = {mem[raddr + 3], mem[raddr + 2], mem[raddr + 1], mem[raddr]};
+assign rdata = re ? {mem[raddr + 3], mem[raddr + 2], mem[raddr + 1], mem[raddr]} : 0;
 always @(posedge clk) begin
     if (we) begin
         case (wtype)
