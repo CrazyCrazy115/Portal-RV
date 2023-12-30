@@ -33,7 +33,7 @@ wire [31:0] rdata2_id;
 // control signal decode from idu
 wire [31:0] imm_id;
 wire [1 :0] aluSrc1_id;
-wire        aluSrc2_id;
+wire [1 :0] aluSrc2_id;
 wire [4 :0] aluOp_id;
 wire [1 :0] nextPCSrc_id;
 wire [1 :0] memWrite_id;
@@ -49,7 +49,7 @@ wire [4 :0] rs2_exe;
 wire [31:0] rdata1_exe;
 wire [31:0] rdata2_exe;
 wire [1 :0] aluSrc1_exe;
-wire        aluSrc2_exe;
+wire [1 :0] aluSrc2_exe;
 wire [4 :0] aluOp_exe;
 wire [1 :0] memWrite_exe;
 wire [2 :0] memRead_exe;
@@ -78,6 +78,8 @@ wire [4 :0] regWriteRd_wb;
 // ------------------------------------------------------------------
 // instruction fetch stage
 // PC
+wire stallD;
+wire stallB;
 wire stall;
 wire jump;
 wire [31:0] d_next_pc;
@@ -103,14 +105,27 @@ IF_ID if_id(
           .out_pc(pc_id)
       );
 
-// Hazard detection unit
+// Data Hazard detection unit
 HazardDetectionUnit hdu(
     .id_exe_memRead(memRead_exe),
     .id_exe_rd(regWriteRd_exe),
     .if_id_rs1(rs1_id),
     .if_id_rs2(rs2_id),
-    .stall(stall)
+    .stall(stallD)
 );
+
+// Control Hazard detection unit
+BHazardDetectionUnit bhdu(
+    .next_pc_src(nextPCSrc_id),
+    .exe_mem_memRead(memRead_mem),
+    .exe_mem_rd(regWriteRd_mem),
+    .id_exe_regWrite(regWrite_exe),
+    .id_exe_regWriteRd(regWriteRd_exe),
+    .rs1(rs1_id),
+    .rs2(rs2_id),
+    .stall(stallB)
+);
+assign stall = stallD || stallB;
 
 // instruction decode stage
 // register files
@@ -142,6 +157,28 @@ IDU idu(
     .io_regWriteSrc(regWriteSrc_id)
 );
 // branch or jump
+
+
+// check the branch condition
+wire branch_cond;
+wire forwardBranch_A;
+wire [31:0] aluBranch_a;
+wire [31:0] aluBranch_b;
+wire forwardBranch_B;
+ForwardBUnit fbu(
+    .exe_mem_rd(regWriteRd_mem),
+    .exe_mem_regWrite(regWrite_mem),
+    .rs1(rs1_id),
+    .rs2(rs2_id),
+    .forwardA(forwardBranch_A),
+    .forwardB(forwardBranch_B)
+);
+assign aluBranch_a = (forwardBranch_A == `FORWARD_B_EXE_MEM) ? aluRes_mem :
+                     (forwardBranch_A == `FORWARD_B_RF     ) ? rdata1_id  :
+                     0;
+assign aluBranch_b = (forwardBranch_B == `FORWARD_B_EXE_MEM) ? aluRes_mem :
+                     (forwardBranch_B == `FORWARD_B_RF     ) ? rdata2_id  :
+                     0;
 // calculate dynamic next pc
 wire [31:0] dnpc;
 wire [31:0] adder_a;
@@ -151,12 +188,9 @@ Adder dnpc_adder(
     .b(imm_id),
     .out(dnpc)
 );
-
-// check the branch condition
-wire branch_cond;
 ALU_Branch alu_branch(
-    .a(rdata1_id),
-    .b(rdata2_id),
+    .a(aluBranch_a),
+    .b(aluBranch_b),
     .aluOp(aluOp_id),
     .cond(branch_cond)
 );
@@ -165,8 +199,8 @@ assign jump = (nextPCSrc_id == `NEXT_PC_JUMP                 ) ? 1'b1 :
               (nextPCSrc_id == `NEXT_PC_BRANCH && branch_cond) ? 1'b1 :
               (nextPCSrc_id == `NEXT_PC_JUMPR                ) ? 1'b1 : 
               1'b0;
-assign d_next_pc = (jump && nextPCSrc_id != `NEXT_PC_JUMPR) ? dnpc : 
-                   (jump && nextPCSrc_id == `NEXT_PC_JUMP ) ? dnpc & 32'hfffffffe : 
+assign d_next_pc = (jump && nextPCSrc_id == `NEXT_PC_JUMPR) ? dnpc & 32'hfffffffe : 
+                   (jump                                  ) ? dnpc : 
                    pc + 4'h4;
 
 // id/exe

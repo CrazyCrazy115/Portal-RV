@@ -42,20 +42,20 @@ always @(posedge clk) begin
         out_pc   <= 0;
     end
     else begin
-        out_inst <= flush ? 32'h00000000 : 
-                    stall ? out_inst     : 
+        out_inst <= stall ? out_inst     : 
+                    flush ? 32'h00000000 : 
                     in_inst;
         // split the instruction
-        rs2      <= flush ? 5'b00000        : 
-                    stall ? out_inst[24:20] :
+        rs2      <= stall ? out_inst[24:20] : 
+                    flush ? 5'b00000        :
                     in_inst[24:20];
-        rs1      <= flush ? 5'b00000        : 
-                    stall ? out_inst[19:15] :
+        rs1      <= stall ? out_inst[19:15] : 
+                    flush ? 5'b00000        :
                     in_inst[19:15];
-        rd       <= flush ? 5'b00000       : 
-                    stall ? out_inst[11:7] : 
+        rd       <= stall ? out_inst[11:7] : 
+                    flush ? 5'b00000       : 
                     in_inst[11:7];
-        out_pc   <= in_pc;
+        out_pc   <= stall ? out_pc : in_pc;
     end
 end
 endmodule

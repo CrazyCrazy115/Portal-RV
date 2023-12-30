@@ -25,12 +25,12 @@ assign rdata2 = (raddr2 == 0) ? 0 :
 always @(posedge clk) begin
 	if (rst) begin
 		for (i = 0; i < 32; i = i + 1) begin
-			rf[i] <= i;
+			rf[i] <= 0;
 		end
 	end
 	else begin
 		if (wen) begin
-			rf[waddr] <= wdata;
+			rf[waddr] <= waddr != 0 ? wdata : 32'h00000000;
 		end
 	end
 end

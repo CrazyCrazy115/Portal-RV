@@ -26,7 +26,7 @@ module IDU(	// <stdin>:60:3
   input  [31:0] io_inst,	// playground/src/core/idu.scala:72:14
   output [31:0] io_imm,	// playground/src/core/idu.scala:72:14
   output [1:0]  io_aluSrc1,	// playground/src/core/idu.scala:72:14
-  output        io_aluSrc2,	// playground/src/core/idu.scala:72:14
+  output [1:0]  io_aluSrc2,	// playground/src/core/idu.scala:72:14
   output [4:0]  io_aluOp,	// playground/src/core/idu.scala:72:14
   output [1:0]  io_nextPCSrc,	// playground/src/core/idu.scala:72:14
   output [1:0]  io_memWrite,	// playground/src/core/idu.scala:72:14
