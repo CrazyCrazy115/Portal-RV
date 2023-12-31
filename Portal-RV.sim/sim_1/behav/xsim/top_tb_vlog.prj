@@ -17,6 +17,8 @@ verilog xil_defaultlib  --include "../../../../Portal-RV.srcs/sources_1/new" \
 "../../../../Portal-RV.srcs/sources_1/new/ForwardUnit.v" \
 "../../../../Portal-RV.srcs/sources_1/new/ALU_Branch.v" \
 "../../../../Portal-RV.srcs/sources_1/new/HazardDetectionUnit.v" \
+"../../../../Portal-RV.srcs/sources_1/new/ForwardBUnit.v" \
+"../../../../Portal-RV.srcs/sources_1/new/BHazardDetectionUnit.v" \
 "../../../../Portal-RV.srcs/sim_1/new/idu_testbench.v" \
 "../../../../Portal-RV.srcs/sim_1/new/PC_tb.v" \
 "../../../../Portal-RV.srcs/sim_1/new/top_tb.v" \

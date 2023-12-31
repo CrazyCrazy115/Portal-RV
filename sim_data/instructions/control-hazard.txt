@@ -1,0 +1,4 @@
+main:
+addi t0,t0,57
+lw t1,0(zero)#
+beqt0,t1,0<main>

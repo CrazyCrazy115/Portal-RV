@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+`include "definitions.vh"
 //////////////////////////////////////////////////////////////////////////////////
 // Company:
 // Engineer:
@@ -32,18 +33,15 @@ module EXE_MEM(
            // wb stage
            input        in_regWrite,
            input [2 :0] in_regWriteSrc,
-           input        in_memToReg,
            input [4 :0] in_regWriteRd,
 
            output reg [31:0] out_aluRes,
            output reg [31:0] out_rdata2,
            output reg [31:0] out_pc,
-           output reg [1 :0] out_nextPCSrc,
            output reg [1 :0] out_memWrite,
            output reg [2 :0] out_memRead,
            output reg        out_regWrite,
            output reg [2 :0] out_regWriteSrc,
-           output reg        out_memToReg,
            output reg [4 :0] out_regWriteRd
        );
 always @(posedge clk) begin
@@ -51,11 +49,10 @@ always @(posedge clk) begin
         out_aluRes      <= 0;
         out_rdata2      <= 0;
         out_pc          <= 0;
-        out_memWrite    <= 0;
+        out_memWrite    <= `MEM_WRITE_N;
         out_memRead     <= 0;
-        out_regWrite    <= 0;
+        out_regWrite    <= `REG_WRITE_N;
         out_regWriteSrc <= 0;
-        out_memToReg    <= 0;
         out_regWriteRd  <= 0;
     end
     else begin
@@ -66,7 +63,6 @@ always @(posedge clk) begin
         out_memRead     <= in_memRead;
         out_regWrite    <= in_regWrite;
         out_regWriteSrc <= in_regWriteSrc;
-        out_memToReg    <= in_memToReg;
         out_regWriteRd  <= in_regWriteRd;
     end
 end

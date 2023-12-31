@@ -7,14 +7,14 @@ module ID_EXE(
            input stall,
            input [31:0] in_pc,
            input [31:0] in_imm,
-           input [5 :0] in_rs1,
-           input [5 :0] in_rs2,
+           input [4 :0] in_rs1,
+           input [4 :0] in_rs2,
            input [31:0] in_rdata1,
            input [31:0] in_rdata2,
            // control signals
            // exe stage
            input [1 :0] in_aluSrc1,
-           input        in_aluSrc2,
+           input [1 :0] in_aluSrc2,
            input [4 :0] in_aluOp,
            // mem stage
            input [1 :0] in_memWrite,
@@ -31,7 +31,7 @@ module ID_EXE(
            output reg [31:0] out_rdata1,
            output reg [31:0] out_rdata2,
            output reg [1 :0] out_aluSrc1,
-           output reg        out_aluSrc2,
+           output reg [1 :0] out_aluSrc2,
            output reg [4 :0] out_aluOp,
            output reg [1 :0] out_memWrite,
            output reg [2 :0] out_memRead,
@@ -50,9 +50,9 @@ always @(posedge clk) begin
         out_aluSrc1     <= 0;
         out_aluSrc2     <= 0;
         out_aluOp       <= 0;
-        out_memWrite    <= 0;
+        out_memWrite    <= `MEM_WRITE_N;
         out_memRead     <= 0;
-        out_regWrite    <= 0;
+        out_regWrite    <= `REG_WRITE_N;
         out_regWriteSrc <= 0;
         out_regWriteRd  <= 0;
     end

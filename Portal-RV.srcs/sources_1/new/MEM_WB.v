@@ -1,4 +1,5 @@
 `timescale 1ns/1ps
+`include "definitions.vh"
 
 module MEM_WB(
            input clk,
@@ -15,7 +16,6 @@ module MEM_WB(
            output reg [31:0] out_memRead,
            output reg        out_regWrite,
            output reg [2 :0] out_regWriteSrc,
-           output reg        out_memToReg,
            output reg [4 :0] out_regWriteRd
        );
 always @(posedge clk) begin
@@ -23,9 +23,8 @@ always @(posedge clk) begin
         out_aluRes      <= 0;
         out_pc          <= 0;
         out_memRead     <= 0;
-        out_regWrite    <= 0;
+        out_regWrite    <= `REG_WRITE_N;
         out_regWriteSrc <= 0;
-        out_memToReg    <= 0;
         out_regWriteRd  <= 0;
     end
     else begin
@@ -34,7 +33,6 @@ always @(posedge clk) begin
         out_memRead     <= in_memRead;
         out_regWrite    <= in_regWrite;
         out_regWriteSrc <= in_regWriteSrc;
-        out_memToReg    <= in_memToReg;
         out_regWriteRd  <= in_regWriteRd;
     end
 end

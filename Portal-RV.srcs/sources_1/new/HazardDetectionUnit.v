@@ -28,7 +28,7 @@ module HazardDetectionUnit(
     input [4:0] if_id_rs2,
     output stall
     );
-assign stall = (id_exe_memRead != `MEM_READ_N && 
+assign stall = ((id_exe_memRead != `MEM_READ_N) && 
                 ((id_exe_rd == if_id_rs1) || 
                  (id_exe_rd == if_id_rs2))
                );

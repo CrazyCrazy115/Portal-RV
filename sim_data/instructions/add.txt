@@ -6,7 +6,7 @@ Disassembly of section .text:
 
 80000000 <_start>:
 80000000:	00000413          	li	s0,0
-80000004:	00009117          	auipc	sp,0x9
+80000004:	00001117          	auipc	sp,0x1
 80000008:	ffc10113          	addi	sp,sp,-4 # 80009000 <_end>
 8000000c:	0f0000ef          	jal	ra,800000fc <_trm_init>
 
