@@ -21,8 +21,6 @@
 
 
 module IDU(	// <stdin>:60:3
-  input         clock,	// <stdin>:61:11
-  input         reset,	// <stdin>:62:11
   input  [31:0] io_inst,	// playground/src/core/idu.scala:72:14
   output [31:0] io_imm,	// playground/src/core/idu.scala:72:14
   output [1:0]  io_aluSrc1,	// playground/src/core/idu.scala:72:14
@@ -57,7 +55,7 @@ module IDU(	// <stdin>:60:3
   wire [4:0]  _ctrlWord_T_48 =
     {ctrlWord_invInputs[2], io_inst[4], io_inst[12], io_inst[13], io_inst[14]};	// src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:53
   ImmGen immExt (	// playground/src/core/idu.scala:111:22
-    .io_inst     (io_inst),
+    .io_inst     (io_inst[31:7]),
     .io_instType
       ({|{&_ctrlWord_T_5, io_inst[3], &_ctrlWord_T_14},
         |{&_ctrlWord_T_12, &_ctrlWord_T_18, &_ctrlWord_T_46},
@@ -148,7 +146,5 @@ module IDU(	// <stdin>:60:3
     {|{ctrlWord_invInputs[0], &_ctrlWord_T_12, &_ctrlWord_T_16},
      |{&_ctrlWord_T_1, &_ctrlWord_T_3, io_inst[3]},
      &_ctrlWord_T_1};	// <stdin>:60:3, playground/src/core/idu.scala:106:29, src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:{53,70}, :114:{19,36}
-
-
 endmodule
 

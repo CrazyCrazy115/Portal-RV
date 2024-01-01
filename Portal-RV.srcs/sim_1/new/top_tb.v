@@ -29,14 +29,14 @@ top top(
     );
 initial begin
     // load instructions
-    $readmemh("D:/coding/cpu/Portal-RV/sim_data/instructions/crc32-hex.txt", top.instruction_memory.mem);
-    $readmemh("D:/coding/cpu/Portal-RV/sim_data/data_memory/data-memory-zero.txt", top.data_memory.mem);
-    $readmemh("D:/coding/cpu/Portal-RV/sim_data/reg-init.txt", top.cpu.rf.rf);
+    // $readmemh("D:/coding/cpu/Portal-RV/sim_data/instructions/crc32-hex.txt", top.instruction_memory.mem);
+    // $readmemh("D:/coding/cpu/Portal-RV/sim_data/data_memory/data-memory-zero.txt", top.data_memory.mem);
+    // $readmemh("D:/coding/cpu/Portal-RV/sim_data/reg-init.txt", top.cpu.rf.rf);
     rst = 1;
     clk = 0;
     #30
     rst = 0;
 end
 
-always #5 clk = ~clk;
+always #10 clk = ~clk;
 endmodule

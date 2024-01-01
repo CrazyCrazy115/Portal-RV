@@ -26,5 +26,9 @@ module instruction_memory(
            output [31:0] inst
        );
 reg [31:0] mem [0:`IM_SIZE - 1];
+initial begin
+    $readmemh(`ROM_PATH, mem);
+end
+
 assign inst = mem[pc >> 2];
 endmodule

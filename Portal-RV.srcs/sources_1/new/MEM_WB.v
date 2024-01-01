@@ -9,7 +9,6 @@ module MEM_WB(
            input [31:0] in_memRead,
            input        in_regWrite,
            input [2 :0] in_regWriteSrc,
-           input        in_memToReg,
            input [4 :0] in_regWriteRd,
            output reg [31:0] out_aluRes,
            output reg [31:0] out_pc,

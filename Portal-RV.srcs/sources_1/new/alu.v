@@ -25,21 +25,15 @@ module ALU(
            input [31:0] a,
            input [31:0] b,
            input [4 :0] aluOp,
-           output reg [31:0] out,
-           output reg overflow,
-           output reg carry
+           output reg [31:0] out
        );
-reg [31:0] t_no_cin;
 always @(*) begin
     case(aluOp)
         `ADD : begin
-            {carry, out} <= a + b;
-            overflow <= (a[31] == b[31] && a[31] != out[31]);
+            out <= $signed(a) + $signed(b);
         end
         `SUB : begin
-            t_no_cin <= {32{1'b1}} ^ b;
-            {carry, out} <= a + t_no_cin + 1'b1;
-            overflow <= (a[31] != t_no_cin[31] && a[31] != out[31]);
+            out <= $signed(a) - $signed(b);
         end
         `XOR :
             out <= a ^ b;

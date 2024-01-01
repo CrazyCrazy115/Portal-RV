@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 module ImmGen(
-           input  [31:0] io_inst,
+           input  [31:7] io_inst,
            input  [2:0]  io_instType,
            output [31:0] io_imm
        );

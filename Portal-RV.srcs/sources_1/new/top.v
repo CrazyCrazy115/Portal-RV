@@ -22,7 +22,8 @@
 
 module top(
            input clk,
-           input rst
+           input rst,
+           output finish
        );
 wire [31:0] inst;
 wire [31:0] pc;
@@ -37,6 +38,7 @@ wire [31:0] rdata;
 cpu cpu(
         .clk(clk),
         .rst(rst),
+        .finish(finish),
         .inst(inst),
         .pc(pc),
         .we(we),
