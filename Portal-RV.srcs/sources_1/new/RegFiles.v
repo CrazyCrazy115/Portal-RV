@@ -15,6 +15,7 @@ module RegFiles (
            output  [31:0]    rdata2
        );
 reg [31:0] rf [31:0];
+
 integer i;
 
 assign rdata1 = (raddr1 == 0) ? 0 :

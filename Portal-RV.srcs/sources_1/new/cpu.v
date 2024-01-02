@@ -4,6 +4,7 @@
 module cpu(
            input clk,
            input rst,
+           output finish,
            // instruction
            input [31:0] inst,
            output [31:0] pc,
@@ -17,7 +18,7 @@ module cpu(
            output [31:0] raddr,
            input  [31:0] rdata
        );
-
+assign finish = (~rst) && (inst == 32'h0000006f);
 // if/id
 wire [31:0] inst_id;
 wire [4 :0] rs2_id;
@@ -143,8 +144,6 @@ RegFiles rf(
 
 // instruction decode
 IDU idu(
-    .clock(clk),
-    .reset(rst),
     .io_inst(inst_id),
     .io_imm(imm_id),
     .io_aluSrc1(aluSrc1_id),
@@ -268,8 +267,6 @@ assign data2 = (forwardB == `FORWARD_ID_EXE ) ? rdata2_exe :
 wire [31:0] alu_a;
 wire [31:0] alu_b;
 wire [31:0] aluRes_exe;
-wire overflow;
-wire carry;
 assign alu_a = (aluSrc1_exe == `RS1) ? data1   :
                (aluSrc1_exe == `PC ) ? pc_exe  : 
                0;
@@ -282,9 +279,7 @@ ALU alu(
     .a(alu_a),
     .b(alu_b),
     .aluOp(aluOp_exe),
-    .out(aluRes_exe),
-    .overflow(overflow),
-    .carry(carry)
+    .out(aluRes_exe)
 );
 
 // exe/mem

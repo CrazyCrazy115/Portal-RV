@@ -1,0 +1,32 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../Portal-RV.srcs/sources_1/new" \
+"../../../../Portal-RV.srcs/sources_1/ip/ROM/sim/ROM.v" \
+"../../../../Portal-RV.srcs/sources_1/new/RegFiles.v" \
+"../../../../Portal-RV.srcs/sources_1/new/cpu.v" \
+"../../../../Portal-RV.srcs/sources_1/new/PC.v" \
+"../../../../Portal-RV.srcs/sources_1/new/IF_ID.v" \
+"../../../../Portal-RV.srcs/sources_1/new/ImmGen.v" \
+"../../../../Portal-RV.srcs/sources_1/new/ALU.v" \
+"../../../../Portal-RV.srcs/sources_1/new/Adder.v" \
+"../../../../Portal-RV.srcs/sources_1/new/ID_EXE.v" \
+"../../../../Portal-RV.srcs/sources_1/new/MEM_WB.v" \
+"../../../../Portal-RV.srcs/sources_1/new/EXE_MEM.v" \
+"../../../../Portal-RV.srcs/sources_1/new/data_memory.v" \
+"../../../../Portal-RV.srcs/sources_1/new/top.v" \
+"../../../../Portal-RV.srcs/sources_1/new/IDU.v" \
+"../../../../Portal-RV.srcs/sources_1/new/ForwardUnit.v" \
+"../../../../Portal-RV.srcs/sources_1/new/ALU_Branch.v" \
+"../../../../Portal-RV.srcs/sources_1/new/HazardDetectionUnit.v" \
+"../../../../Portal-RV.srcs/sources_1/new/ForwardBUnit.v" \
+"../../../../Portal-RV.srcs/sources_1/new/BHazardDetectionUnit.v" \
+"../../../../Portal-RV.srcs/sim_1/new/idu_testbench.v" \
+"../../../../Portal-RV.srcs/sim_1/new/PC_tb.v" \
+"../../../../Portal-RV.srcs/sim_1/new/top_tb.v" \
+"../../../../Portal-RV.srcs/sim_1/new/ImmGen_tb.v" \
+"../../../../Portal-RV.srcs/sim_1/new/ROM_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
