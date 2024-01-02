@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="218177fs"></ZoomEndTime>
-      <Cursor1Time time="51000000fs"></Cursor1Time>
+      <ZoomStartTime time="2162130166fs"></ZoomStartTime>
+      <ZoomEndTime time="2162417967fs"></ZoomEndTime>
+      <Cursor1Time time="2162370000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="174"></NameColumnWidth>
-      <ValueColumnWidth column_width="62"></ValueColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="62" />
+   <WVObjectSize size="60" />
    <wave_markers>
       <marker time="409363" label="" />
       <marker time="565073" label="" />
@@ -36,18 +36,6 @@
       <obj_property name="ElementShortName">finish</obj_property>
       <obj_property name="ObjectShortName">finish</obj_property>
    </wvobject>
-   <wvobject fp_name="/top_tb/top/rom/clka" type="logic">
-      <obj_property name="ElementShortName">clka</obj_property>
-      <obj_property name="ObjectShortName">clka</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_tb/top/rom/addra" type="array">
-      <obj_property name="ElementShortName">addra[6:0]</obj_property>
-      <obj_property name="ObjectShortName">addra[6:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_tb/top/rom/douta" type="array">
-      <obj_property name="ElementShortName">douta[31:0]</obj_property>
-      <obj_property name="ObjectShortName">douta[31:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/top_tb/top/cpu/inst" type="array">
       <obj_property name="ElementShortName">inst[31:0]</obj_property>
       <obj_property name="ObjectShortName">inst[31:0]</obj_property>
@@ -61,8 +49,8 @@
       <obj_property name="ObjectShortName">rf[31:0][31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/top_tb/top/data_memory/mem" type="array">
-      <obj_property name="ElementShortName">mem[0:1023][31:0]</obj_property>
-      <obj_property name="ObjectShortName">mem[0:1023][31:0]</obj_property>
+      <obj_property name="ElementShortName">mem[0:8191][7:0]</obj_property>
+      <obj_property name="ObjectShortName">mem[0:8191][7:0]</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider127">
       <obj_property name="label">IF / ID</obj_property>
@@ -620,6 +608,10 @@
    <wvobject fp_name="/top_tb/top/cpu/memRead_mem" type="array">
       <obj_property name="ElementShortName">memRead_mem[2:0]</obj_property>
       <obj_property name="ObjectShortName">memRead_mem[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/top/raddr" type="array">
+      <obj_property name="ElementShortName">raddr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">raddr[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/top_tb/top/rdata" type="array">
       <obj_property name="ElementShortName">rdata[31:0]</obj_property>
