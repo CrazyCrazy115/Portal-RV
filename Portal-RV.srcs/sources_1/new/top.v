@@ -50,19 +50,35 @@ cpu cpu(
         .rdata(rdata)
     );
 
-instruction_memory instruction_memory(
-                       .pc(pc),
-                       .inst(inst)
-                   );
+// instruction_memory instruction_memory(
+//                        .pc(pc),
+//                        .inst(inst)
+//                    );
+// data_memory data_memory(
+//                 .clk(clk),
+//                 .we(we),
+//                 .wtype(wtype),
+//                 .waddr(waddr),
+//                 .wdata(wdata),
+//                 .re(re),
+//                 .raddr(raddr),
+//                 .rdata(rdata)
+//             );
 
-data_memory data_memory(
-                .clk(clk),
-                .we(we),
-                .wtype(wtype),
-                .waddr(waddr),
-                .wdata(wdata),
-                .re(re),
-                .raddr(raddr),
-                .rdata(rdata)
-            );
+rom rom(
+    .ce(rst),
+    .addr(pc),
+    .inst(inst)
+);
+
+ram ram(
+    .clk(clk),
+    .we(we),
+    .waddr(waddr),
+    .wdata(wdata),
+    .re(re),
+    .raddr(raddr),
+    .rdata(rdata)
+);
+
 endmodule
