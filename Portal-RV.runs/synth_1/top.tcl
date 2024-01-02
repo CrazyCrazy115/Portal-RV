@@ -49,6 +49,8 @@ read_verilog -library xil_defaultlib {
   D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ForwardBUnit.v
   D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/BHazardDetectionUnit.v
   D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/instruction_memory.v
+  D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ram.v
+  D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/rom.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -64,12 +66,12 @@ set_property used_in_implementation false [get_files D:/coding/cpu/Portal-RV/Por
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
-synth_design -top cpu -part xc7a35tcsg324-1
+synth_design -top top -part xc7a35tcsg324-1
 
 
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef cpu.dcp
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file cpu_utilization_synth.rpt -pb cpu_utilization_synth.pb"
+write_checkpoint -force -noxdef top.dcp
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb"
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]

@@ -1,0 +1,117 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Tue Jan  2 17:55:17 2024
+# Process ID: 33168
+# Current directory: D:/coding/cpu/Portal-RV/Portal-RV.runs/synth_1
+# Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
+# Log file: D:/coding/cpu/Portal-RV/Portal-RV.runs/synth_1/top.vds
+# Journal file: D:/coding/cpu/Portal-RV/Portal-RV.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source top.tcl -notrace
+Command: synth_design -top top -part xc7a35tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcsg324-1
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 19116 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:04 . Memory (MB): peak = 840.344 ; gain = 240.449
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'top' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/top.v:23]
+INFO: [Synth 8-6157] synthesizing module 'cpu' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/cpu.v:4]
+INFO: [Synth 8-6157] synthesizing module 'PC' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/PC.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'PC' (1#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/PC.v:4]
+INFO: [Synth 8-6157] synthesizing module 'IF_ID' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/IF_ID.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'IF_ID' (2#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/IF_ID.v:23]
+INFO: [Synth 8-6157] synthesizing module 'HazardDetectionUnit' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/HazardDetectionUnit.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'HazardDetectionUnit' (3#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/HazardDetectionUnit.v:24]
+INFO: [Synth 8-6157] synthesizing module 'BHazardDetectionUnit' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/BHazardDetectionUnit.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'BHazardDetectionUnit' (4#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/BHazardDetectionUnit.v:24]
+INFO: [Synth 8-6157] synthesizing module 'RegFiles' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/RegFiles.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'RegFiles' (5#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/RegFiles.v:3]
+INFO: [Synth 8-6157] synthesizing module 'IDU' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/IDU.v:23]
+INFO: [Synth 8-6157] synthesizing module 'ImmGen' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ImmGen.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'ImmGen' (6#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ImmGen.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'IDU' (7#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/IDU.v:23]
+INFO: [Synth 8-6157] synthesizing module 'ForwardBUnit' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ForwardBUnit.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'ForwardBUnit' (8#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ForwardBUnit.v:24]
+INFO: [Synth 8-6157] synthesizing module 'Adder' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/adder.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'Adder' (9#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/adder.v:24]
+INFO: [Synth 8-6157] synthesizing module 'ALU_Branch' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ALU_Branch.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'ALU_Branch' (10#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ALU_Branch.v:26]
+INFO: [Synth 8-6157] synthesizing module 'ID_EXE' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ID_EXE.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'ID_EXE' (11#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ID_EXE.v:4]
+INFO: [Synth 8-6157] synthesizing module 'ForwardUnit' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ForwardUnit.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'ForwardUnit' (12#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ForwardUnit.v:24]
+INFO: [Synth 8-6157] synthesizing module 'ALU' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/alu.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'ALU' (13#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/alu.v:24]
+INFO: [Synth 8-6157] synthesizing module 'EXE_MEM' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/EXE_MEM.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'EXE_MEM' (14#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/EXE_MEM.v:24]
+INFO: [Synth 8-6157] synthesizing module 'MEM_WB' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/MEM_WB.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'MEM_WB' (15#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/MEM_WB.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'cpu' (16#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/cpu.v:4]
+INFO: [Synth 8-6157] synthesizing module 'rom' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/rom.v:4]
+INFO: [Synth 8-3876] $readmem data file 'D:/coding/cpu/Portal-RV/sim_data/instructions/bubble-sort-hex.txt' is read successfully [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/rom.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'rom' (17#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/rom.v:4]
+INFO: [Synth 8-6157] synthesizing module 'ram' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ram.v:24]
+WARNING: [Synth 8-2898] ignoring malformed $readmem task: invalid memory name [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ram.v:36]
+INFO: [Synth 8-6155] done synthesizing module 'ram' (18#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ram.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'top' (19#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/top.v:23]
+WARNING: [Synth 8-3331] design ram has unconnected port clk
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:11:07 ; elapsed = 00:21:20 . Memory (MB): peak = 2837.719 ; gain = 2237.824
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:11:19 ; elapsed = 00:21:44 . Memory (MB): peak = 2837.719 ; gain = 2237.824
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:11:19 ; elapsed = 00:21:44 . Memory (MB): peak = 2837.719 ; gain = 2237.824
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:06 ; elapsed = 00:00:11 . Memory (MB): peak = 2837.719 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [D:/coding/cpu/Portal-RV/Portal-RV.srcs/constrs_1/new/top.xdc]
+Finished Parsing XDC File [D:/coding/cpu/Portal-RV/Portal-RV.srcs/constrs_1/new/top.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/coding/cpu/Portal-RV/Portal-RV.srcs/constrs_1/new/top.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.048 . Memory (MB): peak = 3110.965 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.704 . Memory (MB): peak = 3110.965 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:12:06 ; elapsed = 00:23:07 . Memory (MB): peak = 3110.965 ; gain = 2511.070
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5580] Multithreading enabled for synth_design using a maximum of 2 processes.
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:12:06 ; elapsed = 00:23:07 . Memory (MB): peak = 3110.965 ; gain = 2511.070
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:12:06 ; elapsed = 00:23:07 . Memory (MB): peak = 3110.965 ; gain = 2511.070
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/alu.v:51]
+INFO: [Synth 8-5546] ROM "mem" won't be mapped to RAM because it is too sparse
