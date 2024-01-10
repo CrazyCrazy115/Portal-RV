@@ -30,19 +30,19 @@ module ram(
     input [31:0] raddr,
     output reg [31:0] rdata
     );
-    reg [7:0] mem[0:`DM_SIZE-1];
+    reg [7:0] ram_mem[0:`DM_SIZE-1];
     initial begin
-        $readmemh(`RAM_PATH, mem);
+        $readmemh(`RAM_PATH, ram_mem);
     end
     always @(*) begin
-        rdata <= re ? {mem[raddr+3], mem[raddr+2], mem[raddr+1], mem[raddr]} : 0;
+        rdata <= re ? {ram_mem[raddr+3], ram_mem[raddr+2], ram_mem[raddr+1], ram_mem[raddr]} : 0;
     end
     always @(posedge clk) begin
         if (we) begin
-            mem[waddr] <= wdata[7:0];
-            mem[waddr+1] <= wdata[15:8];
-            mem[waddr+2] <= wdata[23:16];
-            mem[waddr+3] <= wdata[31:24];
+            ram_mem[waddr] <= wdata[7:0];
+            ram_mem[waddr+1] <= wdata[15:8];
+            ram_mem[waddr+2] <= wdata[23:16];
+            ram_mem[waddr+3] <= wdata[31:24];
         end
     end
 

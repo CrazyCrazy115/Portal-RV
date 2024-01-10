@@ -20,8 +20,3 @@ lw x12,0(x3)
 and x4,x12,x5
 or x8,X12,X6
 add x9,x4,x12
-# control hazard
-beq x0,x0,main
-addi x5,x0,5
-addi x6,x0,6
-addi x4,x0,4
