@@ -6,10 +6,10 @@ module rom(
     input [31:0] addr,
     output reg [31:0] inst
 );
-reg [31:0] mem [0:`IM_SIZE - 1];
+reg [31:0] rom_mem [0:`IM_SIZE - 1];
 
 initial begin
-    $readmemh(`ROM_PATH, mem);
+    $readmemh(`ROM_PATH, rom_mem);
 end
 
 always @(*) begin
@@ -17,7 +17,7 @@ always @(*) begin
         inst <= 32'h00000000;
     end
     else begin
-        inst <= mem[addr >> 2];
+        inst <= rom_mem[addr >> 2];
     end
 end
 

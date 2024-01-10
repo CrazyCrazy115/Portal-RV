@@ -1,4 +1,5 @@
 main:
-addi t0,t0,57
-lw t1,0(zero)#
-beqt0,t1,0<main>
+lw t1, 0(zero)
+addi t2, t2, 0x20
+addi t0, t0, 0x39
+beq t0, t1, main
