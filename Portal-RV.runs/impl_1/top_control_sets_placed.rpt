@@ -1,0 +1,132 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
+| Date         : Fri Jan 12 19:30:55 2024
+| Host         : OMEN-7 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
+| Design       : top
+| Device       : xc7a35t
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    54 |
+|    Minimum number of control sets                        |    54 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    15 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    54 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     0 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     0 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    53 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               3 |            2 |
+| No           | No                    | Yes                    |              27 |            6 |
+| No           | Yes                   | No                     |             509 |          211 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |            1118 |          734 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-----------------+----------------------------------------+------------------+------------------+----------------+
+|   Clock Signal  |              Enable Signal             | Set/Reset Signal | Slice Load Count | Bel Load Count |
++-----------------+----------------------------------------+------------------+------------------+----------------+
+|  clk_dived_BUFG |                                        |                  |                2 |              3 |
+|  clk_dived_BUFG |                                        | cpu/id_exe/rst   |               13 |             23 |
+|  clk_dived_BUFG | cpu/id_exe/E[0]                        | cpu/id_exe/rst   |               18 |             30 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[1]_5[0]  | rst_IBUF         |               23 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[4]_2[0]  | rst_IBUF         |               23 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[4]_3[0]  | rst_IBUF         |               19 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[3]_0[0]  | rst_IBUF         |               22 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[2]_4[0]  | rst_IBUF         |               24 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[3]_3[0]  | rst_IBUF         |               28 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[4]_1[0]  | rst_IBUF         |               27 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[4]_4[0]  | rst_IBUF         |               20 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[2]_7[0]  | rst_IBUF         |               23 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[2]_2[0]  | rst_IBUF         |               22 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[1]_2[0]  | rst_IBUF         |               25 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[2]_10[0] | rst_IBUF         |               17 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[4]_0[0]  | rst_IBUF         |               24 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[1]_4[0]  | rst_IBUF         |               19 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[1]_6[0]  | rst_IBUF         |               30 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[1]_9[0]  | rst_IBUF         |               12 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/E[0]                        | rst_IBUF         |               32 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[1]_3[0]  | rst_IBUF         |               23 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[4]_5[0]  | rst_IBUF         |               19 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[2]_9[0]  | rst_IBUF         |               15 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[1]_8[0]  | rst_IBUF         |               15 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[2]_6[0]  | rst_IBUF         |               23 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[1]_7[0]  | rst_IBUF         |               20 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[1]_0[0]  | rst_IBUF         |               27 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[2]_3[0]  | rst_IBUF         |               20 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[2]_8[0]  | rst_IBUF         |               12 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[2]_0[0]  | rst_IBUF         |               27 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[2]_1[0]  | rst_IBUF         |               22 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[2]_5[0]  | rst_IBUF         |               22 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[3]_2[0]  | rst_IBUF         |               12 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[3]_1[0]  | rst_IBUF         |               22 |             32 |
+|  clk_dived_BUFG | cpu/mem_wb/out_regWriteRd_reg[1]_1[0]  | rst_IBUF         |               27 |             32 |
+|  clk_IBUF_BUFG  |                                        | rst_IBUF         |               11 |             45 |
+|  clk_dived_BUFG | cpu/id_exe/E[0]                        | rst_IBUF         |               20 |             64 |
+|  clk_dived_BUFG | cpu/exe_mem/out_aluRes_reg[10]_0       |                  |               32 |            128 |
+|  clk_dived_BUFG | cpu/exe_mem/out_aluRes_reg[11]_0       |                  |               32 |            128 |
+|  clk_dived_BUFG | cpu/exe_mem/out_aluRes_reg[12]_2       |                  |               32 |            128 |
+|  clk_dived_BUFG | cpu/exe_mem/out_aluRes_reg[13]_3       |                  |               32 |            128 |
+|  clk_dived_BUFG | cpu/exe_mem/out_aluRes_reg[12]_0       |                  |               32 |            128 |
+|  clk_dived_BUFG | cpu/exe_mem/out_aluRes_reg[13]_0       |                  |               32 |            128 |
+|  clk_dived_BUFG | cpu/exe_mem/out_aluRes_reg[13]_2       |                  |               32 |            128 |
+|  clk_dived_BUFG | cpu/exe_mem/out_aluRes_reg[11]_1       |                  |               32 |            128 |
+|  clk_dived_BUFG | cpu/exe_mem/out_aluRes_reg[13]_1       |                  |               32 |            128 |
+|  clk_dived_BUFG | cpu/exe_mem/out_memWrite_reg[0]_1      |                  |               32 |            128 |
+|  clk_dived_BUFG | cpu/exe_mem/out_memWrite_reg[0]_0      |                  |               32 |            128 |
+|  clk_dived_BUFG | cpu/exe_mem/out_memWrite_reg[0]_2      |                  |               32 |            128 |
+|  clk_dived_BUFG | cpu/exe_mem/out_memWrite_reg[0]_3      |                  |               32 |            128 |
+|  clk_dived_BUFG | cpu/exe_mem/out_memWrite_reg[0]_4      |                  |               32 |            128 |
+|  clk_dived_BUFG | cpu/exe_mem/out_memWrite_reg[0]_5      |                  |               32 |            128 |
+|  clk_dived_BUFG | cpu/exe_mem/out_aluRes_reg[12]_1       |                  |               32 |            128 |
+|  clk_dived_BUFG |                                        | rst_IBUF         |              193 |            468 |
++-----------------+----------------------------------------+------------------+------------------+----------------+
+
+

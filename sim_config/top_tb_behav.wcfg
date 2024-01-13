@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2162130166fs"></ZoomStartTime>
-      <ZoomEndTime time="2162417967fs"></ZoomEndTime>
-      <Cursor1Time time="2162370000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="240510fs"></ZoomEndTime>
+      <Cursor1Time time="10000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="174"></NameColumnWidth>
-      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+      <NameColumnWidth column_width="170"></NameColumnWidth>
+      <ValueColumnWidth column_width="68"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="60" />
+   <WVObjectSize size="65" />
    <wave_markers>
       <marker time="409363" label="" />
       <marker time="565073" label="" />
@@ -31,6 +31,26 @@
    <wvobject fp_name="/top_tb/rst" type="logic">
       <obj_property name="ElementShortName">rst</obj_property>
       <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/top/clk_dived" type="logic">
+      <obj_property name="ElementShortName">clk_dived</obj_property>
+      <obj_property name="ObjectShortName">clk_dived</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/top/seg/hex3" type="array">
+      <obj_property name="ElementShortName">hex3[3:0]</obj_property>
+      <obj_property name="ObjectShortName">hex3[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/top/seg/hex2" type="array">
+      <obj_property name="ElementShortName">hex2[3:0]</obj_property>
+      <obj_property name="ObjectShortName">hex2[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/top/seg/hex1" type="array">
+      <obj_property name="ElementShortName">hex1[3:0]</obj_property>
+      <obj_property name="ObjectShortName">hex1[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/top/seg/hex0" type="array">
+      <obj_property name="ElementShortName">hex0[3:0]</obj_property>
+      <obj_property name="ObjectShortName">hex0[3:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/top_tb/top/finish" type="logic">
       <obj_property name="ElementShortName">finish</obj_property>
@@ -48,9 +68,9 @@
       <obj_property name="ElementShortName">rf[31:0][31:0]</obj_property>
       <obj_property name="ObjectShortName">rf[31:0][31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/top_tb/top/data_memory/mem" type="array">
-      <obj_property name="ElementShortName">mem[0:8191][7:0]</obj_property>
-      <obj_property name="ObjectShortName">mem[0:8191][7:0]</obj_property>
+   <wvobject fp_name="/top_tb/top/ram/ram_mem" type="array">
+      <obj_property name="ElementShortName">ram_mem[0:4095][31:0]</obj_property>
+      <obj_property name="ObjectShortName">ram_mem[0:4095][31:0]</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider127">
       <obj_property name="label">IF / ID</obj_property>
@@ -63,6 +83,7 @@
    <wvobject fp_name="group65662" type="group">
       <obj_property name="label">HarzardDetectionUnit</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/top_tb/top/cpu/hdu/id_exe_memRead" type="array">
          <obj_property name="ElementShortName">id_exe_memRead[2:0]</obj_property>
          <obj_property name="ObjectShortName">id_exe_memRead[2:0]</obj_property>
@@ -479,7 +500,6 @@
    <wvobject fp_name="group8381" type="group">
       <obj_property name="label">exe/mem_reg</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/top_tb/top/cpu/exe_mem/in_aluRes" type="array">
          <obj_property name="ElementShortName">in_aluRes[31:0]</obj_property>
          <obj_property name="ObjectShortName">in_aluRes[31:0]</obj_property>
@@ -584,26 +604,6 @@
    <wvobject fp_name="group1112" type="group">
       <obj_property name="label">ram</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/top_tb/top/data_memory/we" type="logic">
-         <obj_property name="ElementShortName">we</obj_property>
-         <obj_property name="ObjectShortName">we</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/top/data_memory/raddr" type="array">
-         <obj_property name="ElementShortName">raddr[31:0]</obj_property>
-         <obj_property name="ObjectShortName">raddr[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/top/data_memory/rdata" type="array">
-         <obj_property name="ElementShortName">rdata[31:0]</obj_property>
-         <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/top/data_memory/waddr" type="array">
-         <obj_property name="ElementShortName">waddr[31:0]</obj_property>
-         <obj_property name="ObjectShortName">waddr[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/top/data_memory/wdata" type="array">
-         <obj_property name="ElementShortName">wdata[31:0]</obj_property>
-         <obj_property name="ObjectShortName">wdata[31:0]</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject fp_name="/top_tb/top/cpu/memRead_mem" type="array">
       <obj_property name="ElementShortName">memRead_mem[2:0]</obj_property>
@@ -620,7 +620,6 @@
    <wvobject fp_name="group1200" type="group">
       <obj_property name="label">mem/wb</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/top_tb/top/cpu/mem_wb/in_aluRes" type="array">
          <obj_property name="ElementShortName">in_aluRes[31:0]</obj_property>
          <obj_property name="ObjectShortName">in_aluRes[31:0]</obj_property>

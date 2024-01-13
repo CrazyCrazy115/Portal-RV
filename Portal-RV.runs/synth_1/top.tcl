@@ -17,6 +17,8 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
+set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
 create_project -in_memory -part xc7a35tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -51,6 +53,8 @@ read_verilog -library xil_defaultlib {
   D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/instruction_memory.v
   D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ram.v
   D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/rom.v
+  D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/scan_led_hex_disp.v
+  D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/clk_div.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
