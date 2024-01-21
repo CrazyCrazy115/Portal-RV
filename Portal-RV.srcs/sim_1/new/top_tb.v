@@ -23,9 +23,11 @@
 module top_tb();
 reg clk;
 reg rst;
+reg btn;
 top top(
         .clk(clk),
-        .rst(rst)
+        .rst(rst),
+        .btn(btn)
     );
 initial begin
     // load instructions
@@ -34,9 +36,13 @@ initial begin
     // $readmemh("D:/coding/cpu/Portal-RV/sim_data/reg-init.txt", top.cpu.rf.rf);
     rst = 1;
     clk = 0;
+    btn = 1;
     #30
     rst = 0;
 end
 
-always #10 clk = ~clk;
+always #10 begin 
+    clk = ~clk;
+    btn = ~btn;
+end
 endmodule

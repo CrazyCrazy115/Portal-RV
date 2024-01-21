@@ -22,9 +22,15 @@
 
 module top(
            input clk,
+           input btn,
            input rst,
-           output finish
+           output finish,
+           output stall,
+           output jump,
+           output [3:0] an,
+           output [6:0] sseg
        );
+wire clk_dived;
 wire [31:0] inst;
 wire [31:0] pc;
 wire we;
@@ -35,10 +41,17 @@ wire re;
 wire [31:0] raddr;
 wire [31:0] rdata;
 
+clk_div clk_div(
+    .clk(clk),
+    .rst(rst),
+    .clk_out(clk_dived)
+);
 cpu cpu(
-        .clk(clk),
+        .clk(clk_dived),
         .rst(rst),
         .finish(finish),
+        .stall(stall),
+        .jump(jump),
         .inst(inst),
         .pc(pc),
         .we(we),
@@ -72,7 +85,7 @@ rom rom(
 );
 
 ram ram(
-    .clk(clk),
+    .clk(clk_dived),
     .we(we),
     .waddr(waddr),
     .wdata(wdata),
@@ -80,5 +93,17 @@ ram ram(
     .raddr(raddr),
     .rdata(rdata)
 );
+
+scan_led_hex_disp seg(
+    .clk(clk),
+    .reset(rst),
+    .hex0(pc[3:0]),
+    .hex1(pc[7:4]),
+    .hex2(pc[11:8]),
+    .hex3(pc[15:12]),
+    .an(an),
+    .sseg(sseg)
+);
+
 
 endmodule

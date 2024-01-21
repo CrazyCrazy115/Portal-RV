@@ -5,6 +5,8 @@ module cpu(
            input clk,
            input rst,
            output finish,
+           output stall,
+           output jump,
            // instruction
            input [31:0] inst,
            output [31:0] pc,
@@ -81,8 +83,8 @@ wire [4 :0] regWriteRd_wb;
 // PC
 wire stallD;
 wire stallB;
-wire stall;
-wire jump;
+// wire stall;
+// wire jump;
 wire [31:0] d_next_pc;
 PC PC(
        .clk(clk),

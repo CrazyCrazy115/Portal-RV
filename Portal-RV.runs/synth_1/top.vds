@@ -2,8 +2,8 @@
 # Vivado v2019.2 (64-bit)
 # SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
 # IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-# Start of session at: Sun Jan  7 23:00:04 2024
-# Process ID: 30532
+# Start of session at: Fri Jan 12 19:28:33 2024
+# Process ID: 28920
 # Current directory: D:/coding/cpu/Portal-RV/Portal-RV.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: D:/coding/cpu/Portal-RV/Portal-RV.runs/synth_1/top.vds
@@ -16,58 +16,104 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Device 21-403] Loading part xc7a35tcsg324-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 17176 
+INFO: Helper process launched with PID 30816 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 840.965 ; gain = 239.164
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 841.531 ; gain = 240.703
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'top' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/top.v:23]
+INFO: [Synth 8-6157] synthesizing module 'clk_div' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/clk_div.v:23]
+	Parameter N bound to: 26'b01001100010010110100000000 
+	Parameter WIDTH bound to: 25 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_div' (1#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/clk_div.v:23]
 INFO: [Synth 8-6157] synthesizing module 'cpu' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/cpu.v:4]
 INFO: [Synth 8-6157] synthesizing module 'PC' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/PC.v:4]
-INFO: [Synth 8-6155] done synthesizing module 'PC' (1#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/PC.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'PC' (2#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/PC.v:4]
 INFO: [Synth 8-6157] synthesizing module 'IF_ID' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/IF_ID.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'IF_ID' (2#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/IF_ID.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'IF_ID' (3#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/IF_ID.v:23]
 INFO: [Synth 8-6157] synthesizing module 'HazardDetectionUnit' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/HazardDetectionUnit.v:24]
-INFO: [Synth 8-6155] done synthesizing module 'HazardDetectionUnit' (3#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/HazardDetectionUnit.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'HazardDetectionUnit' (4#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/HazardDetectionUnit.v:24]
 INFO: [Synth 8-6157] synthesizing module 'BHazardDetectionUnit' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/BHazardDetectionUnit.v:24]
-INFO: [Synth 8-6155] done synthesizing module 'BHazardDetectionUnit' (4#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/BHazardDetectionUnit.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'BHazardDetectionUnit' (5#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/BHazardDetectionUnit.v:24]
 INFO: [Synth 8-6157] synthesizing module 'RegFiles' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/RegFiles.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'RegFiles' (5#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/RegFiles.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'RegFiles' (6#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/RegFiles.v:3]
 INFO: [Synth 8-6157] synthesizing module 'IDU' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/IDU.v:23]
 INFO: [Synth 8-6157] synthesizing module 'ImmGen' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ImmGen.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'ImmGen' (6#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ImmGen.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'IDU' (7#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/IDU.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'ImmGen' (7#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ImmGen.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'IDU' (8#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/IDU.v:23]
 INFO: [Synth 8-6157] synthesizing module 'ForwardBUnit' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ForwardBUnit.v:24]
-INFO: [Synth 8-6155] done synthesizing module 'ForwardBUnit' (8#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ForwardBUnit.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'ForwardBUnit' (9#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ForwardBUnit.v:24]
 INFO: [Synth 8-6157] synthesizing module 'Adder' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/adder.v:24]
-INFO: [Synth 8-6155] done synthesizing module 'Adder' (9#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/adder.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'Adder' (10#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/adder.v:24]
 INFO: [Synth 8-6157] synthesizing module 'ALU_Branch' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ALU_Branch.v:26]
-INFO: [Synth 8-6155] done synthesizing module 'ALU_Branch' (10#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ALU_Branch.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'ALU_Branch' (11#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ALU_Branch.v:26]
 INFO: [Synth 8-6157] synthesizing module 'ID_EXE' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ID_EXE.v:4]
-INFO: [Synth 8-6155] done synthesizing module 'ID_EXE' (11#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ID_EXE.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'ID_EXE' (12#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ID_EXE.v:4]
 INFO: [Synth 8-6157] synthesizing module 'ForwardUnit' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ForwardUnit.v:24]
-INFO: [Synth 8-6155] done synthesizing module 'ForwardUnit' (12#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ForwardUnit.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'ForwardUnit' (13#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ForwardUnit.v:24]
 INFO: [Synth 8-6157] synthesizing module 'ALU' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/alu.v:24]
-INFO: [Synth 8-6155] done synthesizing module 'ALU' (13#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/alu.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'ALU' (14#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/alu.v:24]
 INFO: [Synth 8-6157] synthesizing module 'EXE_MEM' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/EXE_MEM.v:24]
-INFO: [Synth 8-6155] done synthesizing module 'EXE_MEM' (14#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/EXE_MEM.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'EXE_MEM' (15#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/EXE_MEM.v:24]
 INFO: [Synth 8-6157] synthesizing module 'MEM_WB' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/MEM_WB.v:4]
-INFO: [Synth 8-6155] done synthesizing module 'MEM_WB' (15#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/MEM_WB.v:4]
-INFO: [Synth 8-6155] done synthesizing module 'cpu' (16#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/cpu.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'MEM_WB' (16#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/MEM_WB.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'cpu' (17#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/cpu.v:4]
 INFO: [Synth 8-6157] synthesizing module 'rom' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/rom.v:4]
-INFO: [Synth 8-3876] $readmem data file 'D:/coding/cpu/Portal-RV/sim_data/instructions/bubble-sort-hex.txt' is read successfully [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/rom.v:12]
-INFO: [Synth 8-6155] done synthesizing module 'rom' (17#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/rom.v:4]
+INFO: [Synth 8-5534] Detected attribute (* rom_style = "block" *) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/rom.v:10]
+INFO: [Synth 8-3876] $readmem data file 'D:/coding/cpu/Portal-RV/sim_data/instructions/bubble-sort-hex.txt' is read successfully [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/rom.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'rom' (18#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/rom.v:4]
 INFO: [Synth 8-6157] synthesizing module 'ram' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ram.v:24]
-INFO: [Synth 8-3876] $readmem data file 'D:/coding/cpu/Portal-RV/sim_data/data_memory/bubble-sort-ram.txt' is read successfully [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ram.v:35]
-WARNING: [Synth 8-4767] Trying to implement RAM 'ram_mem_reg' in registers. Block RAM or DRAM implementation is not possible; see log for reasons.
-Reason is one or more of the following :
-	1: RAM has multiple writes via different ports in same process. If RAM inferencing intended, write to one port per process. 
-	2: Unable to determine number of words or word size in RAM. 
-	3: No valid read/write found for RAM. 
-RAM "ram_mem_reg" dissolved into registers
-INFO: [Synth 8-6155] done synthesizing module 'ram' (18#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ram.v:24]
-INFO: [Synth 8-6155] done synthesizing module 'top' (19#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/top.v:23]
+INFO: [Synth 8-5534] Detected attribute (* ram_style = "block" *) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ram.v:33]
+INFO: [Synth 8-3876] $readmem data file 'D:/coding/cpu/Portal-RV/sim_data/data_memory/bubble-sort-ram-32.txt' is read successfully [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ram.v:35]
+INFO: [Synth 8-6155] done synthesizing module 'ram' (19#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/ram.v:24]
+INFO: [Synth 8-6157] synthesizing module 'scan_led_hex_disp' [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/scan_led_hex_disp.v:2]
+	Parameter N bound to: 18 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'scan_led_hex_disp' (20#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/scan_led_hex_disp.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'top' (21#1) [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/top.v:23]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[31]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[30]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[29]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[28]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[27]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[26]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[25]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[24]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[23]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[22]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[21]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[20]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[19]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[18]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[17]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[16]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[15]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[14]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[1]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[0]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[31]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[30]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[29]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[28]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[27]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[26]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[25]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[24]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[23]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[22]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[21]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[20]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[19]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[18]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[17]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[16]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[15]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[14]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[1]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[0]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[1]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[0]
+WARNING: [Synth 8-3331] design top has unconnected port btn
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:01:21 ; elapsed = 00:01:25 . Memory (MB): peak = 2769.113 ; gain = 2167.312
+Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:04 . Memory (MB): peak = 914.801 ; gain = 313.973
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -80,55 +126,57 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:43 ; elapsed = 00:01:49 . Memory (MB): peak = 2769.113 ; gain = 2167.312
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 914.801 ; gain = 313.973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:43 ; elapsed = 00:01:49 . Memory (MB): peak = 2769.113 ; gain = 2167.312
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 914.801 ; gain = 313.973
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2769.113 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 914.801 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [D:/coding/cpu/Portal-RV/Portal-RV.srcs/constrs_1/new/top.xdc]
+WARNING: [Vivado 12-507] No nets matched 'btn_IBUF'. [D:/coding/cpu/Portal-RV/Portal-RV.srcs/constrs_1/new/top.xdc:3]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/coding/cpu/Portal-RV/Portal-RV.srcs/constrs_1/new/top.xdc:3]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
 Finished Parsing XDC File [D:/coding/cpu/Portal-RV/Portal-RV.srcs/constrs_1/new/top.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/coding/cpu/Portal-RV/Portal-RV.srcs/constrs_1/new/top.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.036 . Memory (MB): peak = 2961.629 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1020.207 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.772 . Memory (MB): peak = 2961.629 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1020.207 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:02:35 ; elapsed = 00:02:39 . Memory (MB): peak = 2961.629 ; gain = 2359.828
+Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:10 . Memory (MB): peak = 1020.207 ; gain = 419.379
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:02:35 ; elapsed = 00:02:39 . Memory (MB): peak = 2961.629 ; gain = 2359.828
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:10 . Memory (MB): peak = 1020.207 ; gain = 419.379
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:02:35 ; elapsed = 00:02:39 . Memory (MB): peak = 2961.629 ; gain = 2359.828
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:03 ; elapsed = 00:00:10 . Memory (MB): peak = 1020.207 ; gain = 419.379
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [D:/coding/cpu/Portal-RV/Portal-RV.srcs/sources_1/new/alu.v:51]
-INFO: [Synth 8-5546] ROM "rom_mem" won't be mapped to RAM because ---------------------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 02:05:50 ; elapsed = 19:23:24 . Memory (MB): peak = 3257.625 ; gain = 2654.703
+INFO: [Synth 8-7031] Trying to map ROM "rom_mem" into Block RAM due to explicit "ram_style" or "rom_style" specification
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:10 . Memory (MB): peak = 1020.207 ; gain = 419.379
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
-+------+--------------+------------+----------+
-|      |RTL Partition |Replication |Instances |
-+------+--------------+------------+----------+
-|1     |ram__GB0      |           1|   1135105|
-|2     |top__GC0      |           1|     18764|
-+------+--------------+------------+----------+
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -136,30 +184,27 @@ Detailed RTL Component Info :
 +---Adders : 
 	   2 Input     32 Bit       Adders := 8     
 	   3 Input     32 Bit       Adders := 1     
+	   2 Input     26 Bit       Adders := 1     
 +---XORs : 
 	   2 Input     32 Bit         XORs := 1     
 +---Registers : 
 	               32 Bit    Registers := 45    
-	                8 Bit    Registers := 8192  
+	               26 Bit    Registers := 1     
 	                5 Bit    Registers := 9     
 	                3 Bit    Registers := 5     
 	                2 Bit    Registers := 4     
-	                1 Bit    Registers := 3     
+	                1 Bit    Registers := 4     
 +---Muxes : 
 	   2 Input     32 Bit        Muxes := 17    
-	   4 Input     32 Bit        Muxes := 3     
 	   3 Input     32 Bit        Muxes := 2     
-	 129 Input     32 Bit        Muxes := 1     
-	   4 Input      8 Bit        Muxes := 4608  
-	   2 Input      8 Bit        Muxes := 8188  
+	   4 Input     32 Bit        Muxes := 3     
+	   2 Input     26 Bit        Muxes := 1     
 	   2 Input      5 Bit        Muxes := 5     
+	   4 Input      4 Bit        Muxes := 2     
 	   2 Input      3 Bit        Muxes := 4     
-	   4 Input      2 Bit        Muxes := 506   
 	   2 Input      2 Bit        Muxes := 2     
 	   3 Input      2 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 8224  
-	   4 Input      1 Bit        Muxes := 2048  
-	   5 Input      1 Bit        Muxes := 6080  
+	   2 Input      1 Bit        Muxes := 38    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -167,18 +212,15 @@ Finished RTL Component Statistics
 Start RTL Hierarchical Component Statistics 
 ---------------------------------------------------------------------------------
 Hierarchical RTL Component report 
-Module ram 
+Module clk_div 
 Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     26 Bit       Adders := 1     
 +---Registers : 
-	                8 Bit    Registers := 8192  
+	               26 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input     32 Bit        Muxes := 1     
-	   4 Input      8 Bit        Muxes := 4608  
-	   2 Input      8 Bit        Muxes := 8188  
-	   4 Input      2 Bit        Muxes := 506   
-	   2 Input      1 Bit        Muxes := 8186  
-	   4 Input      1 Bit        Muxes := 2048  
-	   5 Input      1 Bit        Muxes := 6080  
+	   2 Input     26 Bit        Muxes := 1     
 Module PC 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -248,15 +290,22 @@ Detailed RTL Component Info :
 +---Adders : 
 	   2 Input     32 Bit       Adders := 2     
 +---Muxes : 
+	   3 Input     32 Bit        Muxes := 2     
 	   2 Input     32 Bit        Muxes := 8     
 	   4 Input     32 Bit        Muxes := 3     
-	   3 Input     32 Bit        Muxes := 2     
 	   2 Input      1 Bit        Muxes := 3     
 Module rom 
 Detailed RTL Component Info : 
 +---Muxes : 
-	 129 Input     32 Bit        Muxes := 1     
 	   2 Input     32 Bit        Muxes := 1     
+Module ram 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module scan_led_hex_disp 
+Detailed RTL Component Info : 
++---Muxes : 
+	   4 Input      4 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -272,7 +321,8 @@ Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
-Warning: Parallel synthesis criteria DSP Report: DSP Report: Generating DSP out0, operation Mode is: A*B.
+Warning: Parallel synthesis criteria is not met 
+DSP Report: Generating DSP out0, operation Mode is: A*B.
 DSP Report: operator out0 is absorbed into DSP out0.
 DSP Report: operator out0 is absorbed into DSP out0.
 DSP Report: Generating DSP out0, operation Mode is: A*B.
@@ -281,14 +331,93 @@ DSP Report: operator out0 is absorbed into DSP out0.
 DSP Report: Generating DSP out0, operation Mode is: (PCIN>>17)+A*B.
 DSP Report: operator out0 is absorbed into DSP out0.
 DSP Report: operator out0 is absorbed into DSP out0.
-INFO: [Synth 8-3886] merging instance 'i_0/cpu/if_id/out_inst_reg[29]' (FDRE) to 'i_0/cpu/if_id/out_inst_reg[31]'
-INFO: [Synth 8-3886] merging instance 'i_0/cpu/if_id/out_inst_reg[1]' (FDRE) to 'i_0/cpu/if_id/out_inst_reg[0]'
-INFO: [Synth 8-3886] merging instance 'i_0/cpu/id_exe/out_imm_reg[29]' (FDR) to 'i_0/cpu/id_exe/out_i---------------------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 02:19:43 ; elapsed = 19:59:09 . Memory (MB): peak = 5154.770 ; gain = 4551.848
+INFO: [Synth 8-7031] Trying to map ROM "p_0_out" into Block RAM due to explicit "ram_style" or "rom_style" specification
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[31]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[30]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[29]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[28]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[27]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[26]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[25]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[24]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[23]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[22]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[21]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[20]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[19]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[18]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[17]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[16]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[15]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[14]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[1]
+WARNING: [Synth 8-3331] design ram has unconnected port waddr[0]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[31]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[30]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[29]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[28]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[27]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[26]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[25]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[24]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[23]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[22]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[21]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[20]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[19]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[18]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[17]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[16]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[15]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[14]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[1]
+WARNING: [Synth 8-3331] design ram has unconnected port raddr[0]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[31]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[30]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[29]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[28]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[27]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[26]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[25]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[24]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[23]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[22]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[21]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[20]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[19]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[18]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[17]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[16]
+WARNING: [Synth 8-3331] design rom has unconnected port addr[15]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "top/ram/ram_mem_reg",trying to implement using LUTRAM
+INFO: [Synth 8-3886] merging instance 'cpu/if_id/out_inst_reg[29]' (FDRE) to 'cpu/if_id/out_inst_reg[31]'
+INFO: [Synth 8-3886] merging instance 'cpu/if_id/out_inst_reg[1]' (FDRE) to 'cpu/if_id/out_inst_reg[0]'
+INFO: [Synth 8-3886] merging instance 'cpu/id_exe/out_imm_reg[29]' (FDR) to 'cpu/id_exe/out_imm_reg[31]'
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:39 . Memory (MB): peak = 1052.645 ; gain = 451.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
+
+ROM:
++------------+------------+---------------+----------------+
+|Module Name | RTL Object | Depth x Width | Implemented As | 
++------------+------------+---------------+----------------+
+|rom         | p_0_out    | 128x30        | LUT            | 
+|rom         | p_0_out    | 128x30        | LUT            | 
++------------+------------+---------------+----------------+
+
+
+Distributed RAM: Preliminary Mapping	Report (see note below)
++------------+-----------------+-----------+----------------------+------------------+
+|Module Name | RTL Object      | Inference | Size (Depth x Width) | Primitives       | 
++------------+-----------------+-----------+----------------------+------------------+
+|top         | ram/ram_mem_reg | Implied   | 4 K x 32             | RAM256X1S x 512	 | 
++------------+-----------------+-----------+----------------------+------------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
 
 DSP: Preliminary Mapping	Report (see note below)
 +------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
@@ -305,37 +434,47 @@ Finished ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
-+------+--------------+------------+----------+
-|      |RTL Partition |Replication |Instances |
-+------+--------------+------------+----------+
-|1     |ram__GB0      |           1|    342842|
-|2     |top__GC0      |           1|     12397|
-+------+--------------+------------+----------+
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 02:19:47 ; elapsed = 19:59:27 . Memory (MB): peak = 5154.770 ; gain = 4551.848
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:47 . Memory (MB): peak = 1052.645 ; gain = 451.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 02:19:47 ; elapsed = 19:59:28 . Memory (MB): peak = 5154.770 ; gain = 4551.848
+Finished Timing Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:48 . Memory (MB): peak = 1053.234 ; gain = 452.406
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping	Report
++------------+-----------------+-----------+----------------------+------------------+
+|Module Name | RTL Object      | Inference | Size (Depth x Width) | Primitives       | 
++------------+-----------------+-----------+----------------------+------------------+
+|top         | ram/ram_mem_reg | Implied   | 4 K x 32             | RAM256X1S x 512	 | 
++------------+-----------------+-----------+----------------------+------------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
-+------+--------------+------------+----------+
-|      |RTL Partition |Replication |Instances |
-+------+--------------+------------+----------+
-|1     |ram__GB0      |           1|    342842|
-|2     |top__GC0      |           1|     12397|
-+------+--------------+------------+----------+
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 02:20:11 ; elapsed = 20:01:10 . Memory (MB): peak = 5154.770 ; gain = 4551.848
+Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:50 . Memory (MB): peak = 1131.441 ; gain = 530.613
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -359,13 +498,13 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 02:20:24 ; elapsed = 20:02:04 . Memory (MB): peak = 5154.770 ; gain = 4551.848
+Finished IO Insertion : Time (s): cpu = 00:00:12 ; elapsed = 00:00:53 . Memory (MB): peak = 1136.691 ; gain = 535.863
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 02:20:24 ; elapsed = 20:02:05 . Memory (MB): peak = 5154.770 ; gain = 4551.848
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:12 ; elapsed = 00:00:53 . Memory (MB): peak = 1136.691 ; gain = 535.863
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -384,25 +523,25 @@ Report Check Netlist:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 02:20:28 ; elapsed = 20:02:22 . Memory (MB): peak = 5154.770 ; gain = 4551.848
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:12 ; elapsed = 00:00:53 . Memory (MB): peak = 1136.691 ; gain = 535.863
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 02:20:29 ; elapsed = 20:02:26 . Memory (MB): peak = 5154.770 ; gain = 4551.848
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:12 ; elapsed = 00:00:53 . Memory (MB): peak = 1136.691 ; gain = 535.863
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 02:20:35 ; elapsed = 20:02:47 . Memory (MB): peak = 5154.770 ; gain = 4551.848
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:53 . Memory (MB): peak = 1136.691 ; gain = 535.863
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 02:20:35 ; elapsed = 20:02:49 . Memory (MB): peak = 5154.770 ; gain = 4551.848
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:12 ; elapsed = 00:00:53 . Memory (MB): peak = 1136.691 ; gain = 535.863
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -415,69 +554,72 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+--------+------+
-|      |Cell    |Count |
-+------+--------+------+
-|1     |BUFG    |     1|
-|2     |CARRY4  |   673|
-|3     |DSP48E1 |     3|
-|4     |LUT1    |   161|
-|5     |LUT2    |  1485|
-|6     |LUT3    | 12373|
-|7     |LUT4    | 12938|
-|8     |LUT5    | 12286|
-|9     |LUT6    | 75809|
-|10    |MUXF7   | 35231|
-|11    |MUXF8   | 17568|
-|12    |FDRE    | 67564|
-|13    |FDSE    |     2|
-|14    |IBUF    |     2|
-|15    |OBUF    |     1|
-+------+--------+------+
++------+----------+------+
+|      |Cell      |Count |
++------+----------+------+
+|1     |BUFG      |     2|
+|2     |CARRY4    |   685|
+|3     |DSP48E1   |     3|
+|4     |LUT1      |   163|
+|5     |LUT2      |   196|
+|6     |LUT3      |  1232|
+|7     |LUT4      |   333|
+|8     |LUT5      |  1161|
+|9     |LUT6      |  1378|
+|10    |MUXF7     |   351|
+|11    |MUXF8     |   144|
+|12    |RAM256X1S |   512|
+|13    |FDCE      |    27|
+|14    |FDRE      |  1628|
+|15    |FDSE      |     2|
+|16    |IBUF      |     2|
+|17    |OBUF      |    14|
++------+----------+------+
 
 Report Instance Areas: 
-+------+---------------+-----------+-------+
-|      |Instance       |Module     |Cells  |
-+------+---------------+-----------+-------+
-|1     |top            |           | 236097|
-|2     |  cpu          |cpu        |  48255|
-|3     |    PC         |PC         |    101|
-|4     |    alu        |ALU        |   1820|
-|5     |    alu_branch |ALU_Branch |     11|
-|6     |    dnpc_adder |Adder      |      8|
-|7     |    exe_mem    |EXE_MEM    |  41673|
-|8     |    id_exe     |ID_EXE     |   2163|
-|9     |    if_id      |IF_ID      |    273|
-|10    |    mem_wb     |MEM_WB     |    222|
-|11    |    rf         |RegFiles   |   1984|
-|12    |  ram          |ram        | 187808|
-|13    |  rom          |rom        |     30|
-+------+---------------+-----------+-------+
++------+---------------+------------------+------+
+|      |Instance       |Module            |Cells |
++------+---------------+------------------+------+
+|1     |top            |                  |  7833|
+|2     |  clk_div      |clk_div           |    67|
+|3     |  cpu          |cpu               |  7001|
+|4     |    PC         |PC                |   156|
+|5     |    alu        |ALU               |  1819|
+|6     |    alu_branch |ALU_Branch        |    11|
+|7     |    dnpc_adder |Adder             |     8|
+|8     |    exe_mem    |EXE_MEM           |   485|
+|9     |    id_exe     |ID_EXE            |  2054|
+|10    |    if_id      |IF_ID             |   254|
+|11    |    mem_wb     |MEM_WB            |   214|
+|12    |    rf         |RegFiles          |  1984|
+|13    |  ram          |ram               |   704|
+|14    |  rom          |rom               |    15|
+|15    |  seg          |scan_led_hex_disp |    28|
++------+---------------+------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 02:20:35 ; elapsed = 20:02:49 . Memory (MB): peak = 5154.770 ; gain = 4551.848
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:12 ; elapsed = 00:00:53 . Memory (MB): peak = 1136.691 ; gain = 535.863
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 02:18:49 ; elapsed = 20:01:36 . Memory (MB): peak = 5154.770 ; gain = 4361.664
-Synthesis Optimization Complete : Time (s): cpu = 02:20:35 ; elapsed = 20:02:49 . Memory (MB): peak = 5154.770 ; gain = 4551.848
+Synthesis finished with 0 errors, 0 critical warnings and 67 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:52 . Memory (MB): peak = 1136.691 ; gain = 430.457
+Synthesis Optimization Complete : Time (s): cpu = 00:00:12 ; elapsed = 00:00:54 . Memory (MB): peak = 1136.691 ; gain = 535.863
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 5154.770 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 53475 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.097 . Memory (MB): peak = 1136.691 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1695 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.099 . Memory (MB): peak = 5154.770 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1136.691 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
+  A total of 512 instances were transformed.
+  RAM256X1S => RAM256X1S (MUXF7(x2), MUXF8, RAMS64E(x4)): 512 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-57 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+65 Infos, 102 Warnings, 1 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 02:20:52 ; elapsed = 20:03:54 . Memory (MB): peak = 5154.770 ; gain = 4848.480
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.094 . Memory (MB): peak = 5154.770 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:13 ; elapsed = 00:01:00 . Memory (MB): peak = 1136.691 ; gain = 829.555
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1136.691 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'D:/coding/cpu/Portal-RV/Portal-RV.runs/synth_1/top.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:14 ; elapsed = 00:00:30 . Memory (MB): peak = 5154.770 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Jan  8 13:15:57 2024...
-4...
+INFO: [Common 17-206] Exiting Vivado at Fri Jan 12 19:29:37 2024...
