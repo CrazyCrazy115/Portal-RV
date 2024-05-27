@@ -31,11 +31,12 @@ module BHazardDetectionUnit(
     input [4:0] rs2,
     output stall
     );
-assign stall = (next_pc_src == `NEXT_PC_BRANCH) && 
+assign stall = (next_pc_src != `NEXT_PC_JUMP) && 
+               (next_pc_src == `NEXT_PC_BRANCH || next_pc_src == `NEXT_PC_JUMPR) && 
                (((exe_mem_memRead != `MEM_READ_N) && 
-                 ((exe_mem_rd == rs1) || (exe_mem_rd == rs2))
+                 ((exe_mem_rd == if_id_rs1) || (exe_mem_rd == if_id_rs2))
                 ) || 
                 ((id_exe_regWrite == `REG_WRITE_Y) &&
-                 ((id_exe_regWriteRd == rs1) || (id_exe_regWriteRd == rs2))
+                 ((id_exe_regWriteRd == if_id_rs1) || (id_exe_regWriteRd == if_id_rs2))
                 ));
 endmodule
