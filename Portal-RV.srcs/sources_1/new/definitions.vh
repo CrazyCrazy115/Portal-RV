@@ -6,8 +6,8 @@
 `define IM_SIZE 32'h00000080
 `define DM_SIZE 32'h00001000
 
-`define RAM_PATH "D:/coding/cpu/Portal-RV/sim_data/data_memory/bubble-sort-ram-32.txt"
-`define ROM_PATH "D:/coding/cpu/Portal-RV/sim_data/instructions/bubble-sort-hex.txt"
+`define RAM_PATH "D:/Download/TimDownload/Portal-RV/sim_data/data_memory/bubble-sort-ram-32.txt"
+`define ROM_PATH "D:/Download/TimDownload/Portal-RV/sim_data/instructions/bubble-sort-hex.txt"
 
 `define PC_INIT 32'h00000000
 

@@ -47,7 +47,7 @@ clk_div clk_div(
     .clk_out(clk_dived)
 );
 cpu cpu(
-        .clk(clk_dived),
+        .clk(clk),
         .rst(rst),
         .finish(finish),
         .stall(stall),
@@ -85,7 +85,7 @@ rom rom(
 );
 
 ram ram(
-    .clk(clk_dived),
+    .clk(clk),
     .we(we),
     .waddr(waddr),
     .wdata(wdata),

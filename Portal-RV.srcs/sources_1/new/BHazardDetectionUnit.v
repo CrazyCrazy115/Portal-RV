@@ -27,8 +27,8 @@ module BHazardDetectionUnit(
     input [4:0] exe_mem_rd,
     input       id_exe_regWrite,
     input [4:0] id_exe_regWriteRd,
-    input [4:0] rs1,
-    input [4:0] rs2,
+    input [4:0] if_id_rs1,
+    input [4:0] if_id_rs2,
     output stall
     );
 assign stall = (next_pc_src != `NEXT_PC_JUMP) && 

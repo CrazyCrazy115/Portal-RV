@@ -124,8 +124,8 @@ BHazardDetectionUnit bhdu(
     .exe_mem_rd(regWriteRd_mem),
     .id_exe_regWrite(regWrite_exe),
     .id_exe_regWriteRd(regWriteRd_exe),
-    .rs1(rs1_id),
-    .rs2(rs2_id),
+    .if_id_rs1(rs1_id),
+    .if_id_rs2(rs2_id),
     .stall(stallB)
 );
 assign stall = stallD || stallB;
